@@ -3,25 +3,30 @@ import pandas as pd
 # carregar dados do excel
 tabela = pd.read_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx")
 
-# ordenar por nome
-tabela = tabela.sort_values(by="Nome")
-
-# salvar alteração
-tabela.to_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
-
 # recebe dados
 def recebe_dados():
-    nome = str(input("Nome da planta: "))
-    preco = float(input("Preço: "))
-    preferencia = str(input("Preferência: "))
+    nome =  str(input("Nome da planta: "))
+    preco =  float(input("Preço: "))
+    preferencia =  str(input("Preferência: "))
 
-    return nome, preco, preferencia
+    produto = [nome, preco, preferencia]
+    return produto
 
 # adicionar novas plantas
-def adicionar_planta(nome, preco, preferencia):
+def adicionar_planta():
+    import classe_Planta
+
     global tabela
-    nova_planta = {"Nome": nome, "Preço": preco, "Preferência": preferencia}
-    tabela = pd.concat([tabela, pd.DataFrame([nova_planta])], ignore_index=True)
+
+    # recebe os dados
+    dados = recebe_dados()
+
+    # adiciona nova planta
+    nova_planta = classe_Planta.Planta(*dados)
+    nova_planta_dic = nova_planta.dicionario()
+
+    # atualiza a tabela
+    tabela = pd.concat([tabela, pd.DataFrame([nova_planta_dic])], ignore_index=True)
     tabela.to_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
 
 # mostra uma linha
@@ -35,7 +40,7 @@ def mostra_cabecalho():
     mostra_linha()
 
 
-
+# PROGRAMA PRINCIPAL
 while True:
     mostra_cabecalho()
 
@@ -50,7 +55,13 @@ while True:
     if escolha == 'n':
         break
     else:
-        adicionar_planta(*recebe_dados())
+        adicionar_planta()
+
+
+# ordenar por nome
+tabela = tabela.sort_values(by="Nome")
+# salvar alteração
+tabela.to_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
 
 # exibe os dados
 print(tabela)
