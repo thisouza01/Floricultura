@@ -39,29 +39,47 @@ def mostra_cabecalho():
     print("       REGISTRAR       ")
     mostra_linha()
 
+def mostra_interface():
+    # Coloca o cabeçalho
+    mostra_cabecalho()
+
+    # Mostra as opções
+    print('1 - Adicionar planta')
+    print('2 - Listagem de plantas')
+    print('3 - Sair')
+
+    mostra_linha()
+
 
 # PROGRAMA PRINCIPAL
 while True:
-    mostra_cabecalho()
+    mostra_interface()
 
-    # verifica se quer adicionar
-    escolha = input("Quer adicionar uma nova planta? (s / n): ").strip().lower()
-    mostra_linha()
-    while escolha not in ('s', 'n'):
-        print('Digite uma opção válida!')
-        escolha = input("Quer adicionar uma nova planta? (s / n): ").strip().lower()
-        mostra_linha()
+    # zera a escolha 
+    escolha = 0
 
-    if escolha == 'n':
+    while escolha not in (1, 2, 3):
+        # verifica se quer adicionar
+        escolha = str(input("Escolha a opção: ").strip())
+
+        if escolha.isnumeric():
+            escolha = int(escolha)
+        else:    
+            print('Digite uma opção válida!')
+        
+    mostra_linha() 
+
+
+    if escolha == 1:
+        adicionar_planta()
+    elif escolha == 2:
+        # ordenar por nome
+        tabela = tabela.sort_values(by="Nome")
+        # salvar alteração
+        tabela.to_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
+        # exibe os dados
+        print(tabela)  
+    elif escolha == 3:
         break
     else:
-        adicionar_planta()
-
-
-# ordenar por nome
-tabela = tabela.sort_values(by="Nome")
-# salvar alteração
-tabela.to_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
-
-# exibe os dados
-print(tabela)
+        print('Opção inválida, digite outra')
