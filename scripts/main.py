@@ -14,7 +14,7 @@ def recebe_dados():
 
 # adicionar novas plantas
 def adicionar_planta():
-    import classe_Planta
+    import scripts.classes.classe_Planta as classe_Planta
 
     global tabela
 
@@ -31,7 +31,7 @@ def adicionar_planta():
 
 # mostra uma linha
 def mostra_linha():
-    print("="*30)
+    print("="*28)
 
 # menu para receber dados
 def mostra_cabecalho():
