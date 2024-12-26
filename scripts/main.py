@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 # carregar dados do excel
 tabela = pd.read_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx")
 
@@ -50,36 +51,36 @@ def mostra_interface():
 
     mostra_linha()
 
+if __name__ == '__main__':
+    # PROGRAMA PRINCIPAL
+    while True:
+        mostra_interface()
 
-# PROGRAMA PRINCIPAL
-while True:
-    mostra_interface()
+        # zera a escolha 
+        escolha = 0
 
-    # zera a escolha 
-    escolha = 0
+        while escolha not in (1, 2, 3):
+            # verifica se quer adicionar
+            escolha = str(input("Escolha a opção: ").strip())
 
-    while escolha not in (1, 2, 3):
-        # verifica se quer adicionar
-        escolha = str(input("Escolha a opção: ").strip())
-
-        if escolha.isnumeric():
-            escolha = int(escolha)
-        else:    
-            print('Digite uma opção válida!')
-        
-    mostra_linha() 
+            if escolha.isnumeric():
+                escolha = int(escolha)
+            else:    
+                print('Digite uma opção válida!')
+            
+        mostra_linha() 
 
 
-    if escolha == 1:
-        adicionar_planta()
-    elif escolha == 2:
-        # ordenar por nome
-        tabela = tabela.sort_values(by="Nome")
-        # salvar alteração
-        tabela.to_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
-        # exibe os dados
-        print(tabela)  
-    elif escolha == 3:
-        break
-    else:
-        print('Opção inválida, digite outra')
+        if escolha == 1:
+            adicionar_planta()
+        elif escolha == 2:
+            # ordenar por nome
+            tabela = tabela.sort_values(by="Nome")
+            # salvar alteração
+            tabela.to_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
+            # exibe os dados
+            print(tabela)  
+        elif escolha == 3:
+            break
+        else:
+            print('Opção inválida, digite outra')
