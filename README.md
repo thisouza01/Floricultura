@@ -6,5 +6,5 @@ Um projetocadastrar plantas e preços de uma floricultura.
 - Adicionar novas plantas
 
 ### Como usar
-1. Instale os requisitos: `pip install pandas openpyxl`.
+1. Instale os requisitos: `pip install pandas`.
 2. Execute o script: `python scripts/main.py`.
