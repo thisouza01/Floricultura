@@ -1,8 +1,7 @@
 import pandas as pd
 
-
 # carregar dados do excel
-tabela = pd.read_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx")
+tabela = pd.read_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx")
 
 # recebe dados
 def recebe_dados():
@@ -15,7 +14,7 @@ def recebe_dados():
 
 # adicionar novas plantas
 def adicionar_planta():
-    import scripts.classes.classe_Planta as classe_Planta
+    import classes.classe_Planta as classe_Planta
 
     global tabela
 
@@ -28,7 +27,7 @@ def adicionar_planta():
 
     # atualiza a tabela
     tabela = pd.concat([tabela, pd.DataFrame([nova_planta_dic])], ignore_index=True)
-    tabela.to_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
+    tabela.to_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
 
 # mostra uma linha
 def mostra_linha():
@@ -77,7 +76,7 @@ if __name__ == '__main__':
             # ordenar por nome
             tabela = tabela.sort_values(by="Nome")
             # salvar alteração
-            tabela.to_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
+            tabela.to_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
             # exibe os dados
             print(tabela)  
         elif escolha == 3:
