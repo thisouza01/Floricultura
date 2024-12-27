@@ -46,7 +46,8 @@ def mostra_interface():
     # Mostra as opções
     print('1 - Adicionar planta')
     print('2 - Listagem de plantas')
-    print('3 - Sair')
+    print('3 - Converter arquivo para CSV ou Excel')
+    print('4 - Sair')
 
     mostra_linha()
 
@@ -58,7 +59,7 @@ if __name__ == '__main__':
         # zera a escolha 
         escolha = 0
 
-        while escolha not in (1, 2, 3):
+        while escolha not in (1, 2, 3, 4):
             # verifica se quer adicionar
             escolha = str(input("Escolha a opção: ").strip())
 
@@ -80,6 +81,24 @@ if __name__ == '__main__':
             # exibe os dados
             print(tabela)  
         elif escolha == 3:
+            import conversao.converter_arquivo as convert_arq
+
+            # recebe a escolha
+            escolha_convert = str(input('1 - Excel \n2 - CSV \n'))
+
+            # verifica se é numerico
+            if escolha_convert.isnumeric() and '1' == escolha_convert == '2':
+                escolha_convert = int(escolha_convert)
+            else:
+                print('Digite uma opção válida!')
+
+            if escolha_convert == 1:
+                # converte para Excel
+                convert_arq.converte_arquivo(tabela, formato='Excel')
+            else:
+                # converte para CSV
+                convert_arq.converte_arquivo(tabela, formato='CSV')    
+        elif escolha == 4:
             break
         else:
             print('Opção inválida, digite outra')
