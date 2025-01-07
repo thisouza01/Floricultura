@@ -1,5 +1,5 @@
 ## Cadastro de Plantas para Floricultura
-Um projetocadastrar plantas e preços de uma floricultura.
+Um projeto para cadastro e pesquisa de plantas.
 
 ### Funcionalidades
 - Exibir lista de plantas
