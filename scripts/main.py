@@ -20,13 +20,17 @@ try:
         funcao.mostra_linha() 
 
 
-        if escolha == 1:
-            import servicos.funcoes_dados as servico
-            
-            # adicionar planta
-            servico.adicionar_planta()
+        if escolha == 1: # CADASTRA AS PLANTAS
+            # import servicos.funcoes_dados as servico
+            import banco_dados.banco as banco
 
-        elif escolha == 2:
+            # adicionar planta ao arquivo
+            # servico.adicionar_planta()
+
+            # adiciona planta ao banco de dados
+            banco.cadastrar_planta_db()
+
+        elif escolha == 2: # MOSTRA AS PLANTAS
             import pandas as pd
 
             # carregar dados do excel
@@ -40,7 +44,7 @@ try:
             
             # exibe os dados
             print(tabela)  
-        elif escolha == 3:
+        elif escolha == 3: # CONVERTE O ARQUIVO
             import conversao.converter_arquivo as convert_arq
 
             # recebe a escolha
