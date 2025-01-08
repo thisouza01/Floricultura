@@ -3,7 +3,9 @@ Um projeto para cadastro e pesquisa de plantas.
 
 ### Funcionalidades
 - Exibir lista de plantas
-- Adicionar novas plantas
+    - cadastradas no banco de dados
+    - no arquivo
+- Adicionar novas plantas ao banco de dados sqlite
 - Converter tabela para excel ou csv
 
 ### Como usar
