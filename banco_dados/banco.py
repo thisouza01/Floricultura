@@ -1,19 +1,26 @@
 import sqlite3
-from scripts.servicos.funcoes_dados import *
+from scripts.servicos.funcoes_dados import recebe_dados
 
 # tentar conectar ao banco de dados teste.db -> se não existir, cria
 conexao = sqlite3.connect('teste.db')
 print('Database criado com sucesso!')
 
-# criar uma tabela
-conexao.execute(''' CREATE TABLE PLANTA
-                (ID INT PRIMARY KEY     NOT NULL,
-                 NOME TEXT              NOT NULL,
-                 PRECO REAL             NOT NULL,
-                 PREFERENCIA TEXT       NOT NULL);''')
-print('Tabela criada com sucesso!')
+# verifica se a tabela ja foi criada
+recebe_cursor = conexao.execute('''SELECT COUNT(*) from sqlite_master''')
+qnt_tabelas = recebe_cursor.fetchone()[0]
 
-resultado = [recebe_dados()]
+if qnt_tabelas == 0:
+    # criar uma tabela
+    conexao.execute(''' CREATE TABLE PLANTA
+                    (ID INT PRIMARY KEY     NOT NULL,
+                    NOME TEXT              NOT NULL,
+                    PRECO REAL             NOT NULL,
+                    PREFERENCIA TEXT       NOT NULL);''')
+    print('Tabela criada com sucesso!')
+
+resultado = [*recebe_dados()]
+
+print(resultado)
 
 if len(resultado) != 3:
     raise ValueError('A função deve retornar apenas 3 argumentos: ')
