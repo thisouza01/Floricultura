@@ -1,7 +1,7 @@
-import menu.funcoes as funcao
-
-    # PROGRAMA PRINCIPAL
+# PROGRAMA PRINCIPAL
 try:
+    from menu import funcoes as funcao
+
     while True:
         funcao.mostra_interface()
 
@@ -22,28 +22,42 @@ try:
 
         if escolha == 1: # CADASTRA AS PLANTAS
             # import servicos.funcoes_dados as servico
-            import banco_dados.banco as banco
+            from banco_dados.banco import cadastrar_planta_db
 
             # adicionar planta ao arquivo
             # servico.adicionar_planta()
 
             # adiciona planta ao banco de dados
-            banco.cadastrar_planta_db()
+            cadastrar_planta_db()
 
         elif escolha == 2: # MOSTRA AS PLANTAS
             import pandas as pd
+            from banco_dados.banco import mostrar_plantas_db
 
-            # carregar dados do excel
-            tabela = pd.read_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx")
+            # escolha qual versão ver
+            escolha_lista = str(input('1 - Arquivo\n2 - Tabela do banco de dados: \n'))
 
-            # ordenar por nome
-            tabela = tabela.sort_values(by="Nome")
+            # verifica escolha
+            if escolha_lista.isnumeric() and '1' == escolha_lista == '2':
+                escolha_lista = int(escolha_lista)
+            else:
+                print('Escolha uma opção válida!!')    
 
-            # salvar alteração
-            tabela.to_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
-            
-            # exibe os dados
-            print(tabela)  
+            if escolha_lista == 1:
+                # carregar dados do excel
+                tabela = pd.read_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx")
+
+                # ordenar por nome
+                tabela = tabela.sort_values(by="Nome")
+
+                # salvar alteração
+                tabela.to_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
+                
+                # exibe os dados
+                print(tabela)  
+            else:
+                mostrar_plantas_db()
+                
         elif escolha == 3: # CONVERTE O ARQUIVO
             import conversao.converter_arquivo as convert_arq
 
@@ -68,4 +82,4 @@ try:
             print('Opção inválida, digite outra')
             
 except KeyboardInterrupt:
-    print('Programa cancelado via teclado!')
+    print('\nPrograma cancelado via teclado!')

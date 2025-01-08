@@ -7,6 +7,8 @@ class Planta:
     def dicionario(self):
         return {"Nome": self.nome, "Preço": self.preco, "Preferência": self.preferencia}    
 
+
+
 if __name__ == '__main__':
     def recebe_dados():
         nome = str(input('Nome da planta: '))
