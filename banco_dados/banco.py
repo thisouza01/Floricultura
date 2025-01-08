@@ -1,4 +1,5 @@
 import sqlite3
+from scripts.servicos.funcoes_dados import *
 
 # tentar conectar ao banco de dados teste.db -> se não existir, cria
 conexao = sqlite3.connect('teste.db')
@@ -8,20 +9,27 @@ print('Database criado com sucesso!')
 conexao.execute(''' CREATE TABLE PLANTA
                 (ID INT PRIMARY KEY     NOT NULL,
                  NOME TEXT              NOT NULL,
-                 PRECO REAL             NOT NULL);''')
+                 PRECO REAL             NOT NULL,
+                 PREFERENCIA TEXT       NOT NULL);''')
 print('Tabela criada com sucesso!')
 
-# insere dados
-conexao.execute("INSERT INTO PLANTA (ID,NOME,PRECO) \
-                      VALUES (1, 'Zamiokulka G', '80')");
+resultado = [recebe_dados()]
 
-conexao.execute("INSERT INTO PLANTA (ID,NOME,PRECO) \
-                      VALUES (2, 'Zamiokulka P', '80')");
+if len(resultado) != 3:
+    raise ValueError('A função deve retornar apenas 3 argumentos: ')
 
-# commit para salvar
-conexao.commit()
-print('Arquivos inseridos com sucesso!!')
-
+query = """
+        INSERT INTO PLANTA (ID,NOME,PRECO,PREFERENCIA)
+        VALUES (?,?,?,?)
+    """
+try:
+    # Insere os dados
+    conexao.execute(query, (id, resultado[0], resultado[1], resultado[2]))
+    conexao.commit()
+    print("Dados inseridos com sucesso!")
+except sqlite3.Error as e:
+    print("Erro ao inserir dados no banco de dados:", e)
+        
 # selecionar produtos
 cursor = conexao.execute("SELECT  ID, NOME, PRECO FROM PLANTA")
 for linha in cursor:
