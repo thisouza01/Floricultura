@@ -1,60 +1,9 @@
-import pandas as pd
+import menu.funcoes as funcao
 
-# carregar dados do excel
-tabela = pd.read_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx")
-
-# recebe dados
-def recebe_dados():
-    nome =  str(input("Nome da planta: "))
-    preco =  float(input("Preço: "))
-    preferencia =  str(input("Preferência: "))
-
-    produto = [nome, preco, preferencia]
-    return produto
-
-# adicionar novas plantas
-def adicionar_planta():
-    import classes.classe_Planta as classe_Planta
-
-    global tabela
-
-    # recebe os dados
-    dados = recebe_dados()
-
-    # adiciona nova planta
-    nova_planta = classe_Planta.Planta(*dados)
-    nova_planta_dic = nova_planta.dicionario()
-
-    # atualiza a tabela
-    tabela = pd.concat([tabela, pd.DataFrame([nova_planta_dic])], ignore_index=True)
-    tabela.to_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
-
-# mostra uma linha
-def mostra_linha():
-    print("="*28)
-
-# menu para receber dados
-def mostra_cabecalho():
-    mostra_linha()
-    print("       REGISTRAR       ")
-    mostra_linha()
-
-def mostra_interface():
-    # Coloca o cabeçalho
-    mostra_cabecalho()
-
-    # Mostra as opções
-    print('1 - Adicionar planta')
-    print('2 - Listagem de plantas')
-    print('3 - Converter arquivo para CSV ou Excel')
-    print('4 - Sair')
-
-    mostra_linha()
-
-if __name__ == '__main__':
     # PROGRAMA PRINCIPAL
+try:
     while True:
-        mostra_interface()
+        funcao.mostra_interface()
 
         # zera a escolha 
         escolha = 0
@@ -68,16 +17,27 @@ if __name__ == '__main__':
             else:    
                 print('Digite uma opção válida!')
             
-        mostra_linha() 
+        funcao.mostra_linha() 
 
 
         if escolha == 1:
-            adicionar_planta()
+            import servicos.funcoes_dados as servico
+            
+            # adicionar planta
+            servico.adicionar_planta()
+
         elif escolha == 2:
+            import pandas as pd
+
+            # carregar dados do excel
+            tabela = pd.read_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx")
+
             # ordenar por nome
             tabela = tabela.sort_values(by="Nome")
+
             # salvar alteração
             tabela.to_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
+            
             # exibe os dados
             print(tabela)  
         elif escolha == 3:
@@ -102,3 +62,6 @@ if __name__ == '__main__':
             break
         else:
             print('Opção inválida, digite outra')
+            
+except KeyboardInterrupt:
+    print('Programa cancelado via teclado!')
