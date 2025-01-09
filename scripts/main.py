@@ -38,20 +38,20 @@ try:
             escolha_lista = str(input('1 - Arquivo\n2 - Tabela do banco de dados: \n'))
 
             # verifica escolha
-            if escolha_lista.isnumeric() and '1' == escolha_lista == '2':
+            if escolha_lista.isnumeric() and (escolha_lista == '1' or escolha_lista == '2'):
                 escolha_lista = int(escolha_lista)
             else:
                 print('Escolha uma opção válida!!')    
 
             if escolha_lista == 1:
                 # carregar dados do excel
-                tabela = pd.read_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx")
+                tabela = pd.read_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx")
 
                 # ordenar por nome
                 tabela = tabela.sort_values(by="Nome")
 
                 # salvar alteração
-                tabela.to_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
+                tabela.to_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
                 
                 # exibe os dados
                 print(tabela)  
@@ -65,7 +65,7 @@ try:
             escolha_convert = str(input('1 - Excel \n2 - CSV \n'))
 
             # verifica se é numerico
-            if escolha_convert.isnumeric() and '1' == escolha_convert == '2':
+            if escolha_convert.isnumeric() and (escolha_convert == '1' or escolha_convert == '2'):
                 escolha_convert = int(escolha_convert)
             else:
                 print('Digite uma opção válida!')
