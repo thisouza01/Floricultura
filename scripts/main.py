@@ -21,11 +21,7 @@ try:
 
 
         if escolha == 1: # CADASTRA AS PLANTAS
-            # import servicos.funcoes_dados as servico
             from banco_dados.banco import cadastrar_planta_db
-
-            # adicionar planta ao arquivo
-            # servico.adicionar_planta()
 
             # adiciona planta ao banco de dados
             cadastrar_planta_db()
