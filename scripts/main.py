@@ -3,7 +3,7 @@ try:
     from menu import funcoes as funcao
 
     while True:
-        funcao.mostra_interface()
+        funcao.mostra_interface('REGISTRAR')
 
         # zera a escolha 
         escolha = 0
@@ -34,8 +34,11 @@ try:
             import pandas as pd
             from banco_dados.banco import mostrar_plantas_db
 
+
             # escolha qual versão ver
-            escolha_lista = str(input('1 - Arquivo\n2 - Tabela do banco de dados: \n'))
+            escolha_lista = str(input('1 - Arquivo\n2 - Tabela do banco de dados \n--> '))
+
+            funcao.mostra_cabecalho('SELECIONANDO')
 
             # verifica escolha
             if escolha_lista.isnumeric() and (escolha_lista == '1' or escolha_lista == '2'):
@@ -62,7 +65,8 @@ try:
             import conversao.converter_arquivo as convert_arq
 
             # recebe a escolha
-            escolha_convert = str(input('1 - Excel \n2 - CSV \n'))
+            escolha_convert = str(input('1 - Excel \n2 - CSV \n--> '))
+
 
             # verifica se é numerico
             if escolha_convert.isnumeric() and (escolha_convert == '1' or escolha_convert == '2'):

@@ -3,14 +3,14 @@ def mostra_linha():
     print("="*28)
 
 # menu para receber dados
-def mostra_cabecalho():
+def mostra_cabecalho(nome):
     mostra_linha()
-    print("       REGISTRAR       ")
+    print(f"       {nome}       ")
     mostra_linha()
 
-def mostra_interface():
+def mostra_interface(nome):
     # Coloca o cabeçalho
-    mostra_cabecalho()
+    mostra_cabecalho(nome)
 
     # Mostra as opções
     print('1 - Adicionar planta')
@@ -18,4 +18,4 @@ def mostra_interface():
     print('3 - Converter arquivo para CSV ou Excel')
     print('4 - Sair')
 
-    mostra_linha()
+    mostra_linha()   
