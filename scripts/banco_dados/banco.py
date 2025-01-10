@@ -78,6 +78,7 @@ def mostrar_plantas_db():
 
     cursor = conexao.execute("SELECT  ID, NOME, PRECO FROM PLANTA")
     for linha in cursor:
+        print('----------------------')
         print('ID = ', linha[0])
         print('NOME = ', linha[1])
         print('PRECO = ', linha[2])

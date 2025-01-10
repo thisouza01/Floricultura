@@ -1,5 +1,5 @@
 
-def converte_arquivo(tabela, formato = 'csv'):
+def converte_arquivo(tabela, formato):
     from main import tabela
 
     if formato.lower() == 'csv':
