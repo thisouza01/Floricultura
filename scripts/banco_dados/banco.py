@@ -3,31 +3,6 @@ from servicos.funcoes_dados import recebe_dados
 
 ##########################################################################
 #
-#           TENTAR CONECTAR AO BANCO SE EXISTIR, SENÃO CRIA
-#
-##########################################################################
-if __name__ == '__main__':
-    conexao = sqlite3.connect('teste.db')
-    print('Database criado com sucesso!')
-##########################################################################
-#
-#                  VERIFICA SE A TABELA JA FOI CRIADA
-#
-##########################################################################
-    recebe_cursor = conexao.execute('''SELECT COUNT(*) from sqlite_master''')
-    qnt_tabelas = recebe_cursor.fetchone()[0]
-
-    if qnt_tabelas == 0:
-        # criar uma tabela
-        conexao.execute(''' CREATE TABLE PLANTA
-                        (ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                        NOME TEXT              NOT NULL,
-                        PRECO REAL             NOT NULL,
-                        PREFERENCIA TEXT       NOT NULL);''')
-        print('Tabela criada com sucesso!')
-
-##########################################################################
-#
 #                      RECEBE DADOS PARA O BANCO
 #
 ##########################################################################
@@ -76,7 +51,7 @@ def cadastrar_planta_db():
 def mostrar_plantas_db():
     conexao = sqlite3.connect('teste.db')
 
-    cursor = conexao.execute("SELECT  ID, NOME, PRECO FROM PLANTA")
+    cursor = conexao.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA")
     for linha in cursor:
         print('----------------------')
         print('ID = ', linha[0])
@@ -85,8 +60,36 @@ def mostrar_plantas_db():
 
     print('Consulta realizado com sucesso!!')    
 
-# programa principal 
-if __name__ ==  '__main__':
+#########################################################################
+#
+#                           PROGRAMA PRINCIPAL
+#
+##########################################################################
+#
+#           TENTAR CONECTAR AO BANCO SE EXISTIR, SENÃO CRIA
+#
+##########################################################################
+if __name__ == '__main__':
+    conexao = sqlite3.connect('teste.db')
+    print('Database criado com sucesso!')
+##########################################################################
+#
+#                  VERIFICA SE A TABELA JA FOI CRIADA
+#
+##########################################################################
+    recebe_cursor = conexao.execute('''SELECT COUNT(*) from sqlite_master''')
+    qnt_tabelas = recebe_cursor.fetchone()[0]
+
+    if qnt_tabelas == 0:
+        # criar uma tabela
+        conexao.execute(''' CREATE TABLE PLANTA
+                        (ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                        NOME TEXT              NOT NULL,
+                        PRECO REAL             NOT NULL,
+                        PREFERENCIA TEXT       NOT NULL);''')
+        print('Tabela criada com sucesso!')
+
+
     cadastrar_planta_db()
     mostrar_plantas_db()
 

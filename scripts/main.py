@@ -60,22 +60,8 @@ try:
         elif escolha == 3: # CONVERTE O ARQUIVO
             import conversao.converter_arquivo as convert_arq
 
-            # recebe a escolha
-            escolha_convert = str(input('1 - Excel \n2 - CSV \n--> '))
-
-
-            # verifica se é numerico
-            if escolha_convert.isnumeric() and (escolha_convert == '1' or escolha_convert == '2'):
-                escolha_convert = int(escolha_convert)
-            else:
-                print('Digite uma opção válida!')
-
-            if escolha_convert == 1:
-                # converte para Excel
-                convert_arq.converte_arquivo(tabela, formato='Excel')
-            else:
-                # converte para CSV
-                convert_arq.converte_arquivo(tabela, formato='CSV')    
+            convert_arq.escreve_arquivo()  
+            
         elif escolha == 4:
             break
         else:

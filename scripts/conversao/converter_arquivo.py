@@ -1,14 +1,26 @@
 
-def converte_arquivo(tabela, formato):
-    from main import tabela
+#########################################################################
+#
+#                         ESCREVE NO ARQUIVO
+#                           
+#########################################################################
+def escreve_arquivo():
+    import sqlite3
+    conexao = sqlite3.connect(r'C:\Users\WIN 11\Floricultura\scripts\teste.db')
+    
+    cursor = conexao.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA")
+    dados = cursor.fetchall()
+    
+    with open("tabela_plantas.txt", 'w', encoding="utf-8") as arquivo:
+        arquivo.write("Cadastro de Plantas\n")
+        arquivo.write("ID |    Nome    |   Preço  |    Preferencia   \n")
+        arquivo.write("-" * 30 + "\n")
+        
+        for linha in dados:
+            id, nome, preco, preferencia = linha
+            arquivo.write(f"{id} | {nome} |    R${preco:.2f}    | {preferencia}\n")
 
-    if formato.lower() == 'csv':
-        tabela.to_csv('floricultura.csv', index=False, sep='|')
-        print("Arquivo exportado como CSV com sucesso!") 
+    print('Convertido com sucesso!!')
 
-    elif formato.lower() == 'excel':
-        tabela.to_excel('floricultura.xlsx', index=False)    
-        print("Arquivo exportado como Excel com sucesso!") 
-
-    else:
-        print("Formato não suportado. Escolha 'csv' ou 'excel'.")
+if __name__ == '__main__':
+    escreve_arquivo()    

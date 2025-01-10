@@ -15,7 +15,7 @@ def mostra_interface(nome):
     # Mostra as opções
     print('1 - Adicionar planta')
     print('2 - Listagem de plantas')
-    print('3 - Converter arquivo para CSV ou Excel ---> Precisa implementar ao banco de dados agora')
+    print('3 - Converter arquivo para TXT')
     print('4 - Sair')
 
     mostra_linha()   
