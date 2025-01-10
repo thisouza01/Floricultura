@@ -1,7 +1,0 @@
-Cadastro de Plantas
-ID |    Nome    |   Preço  |    Preferencia   
-------------------------------
-1 | Alfazema md |    R$4.00    | Sol
-2 | Jasmim Manga |    R$250.00    | Sol
-3 | Jasmim Manga |    R$280.00    | Sol
-4 | Ixoria folha fina md |    R$7.00    | Sol

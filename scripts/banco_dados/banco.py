@@ -60,10 +60,8 @@ def mostrar_plantas_db():
 
     print('Consulta realizado com sucesso!!')    
 
-#########################################################################
-#
-#                           PROGRAMA PRINCIPAL
-#
+
+    
 ##########################################################################
 #
 #           TENTAR CONECTAR AO BANCO SE EXISTIR, SENÃO CRIA
