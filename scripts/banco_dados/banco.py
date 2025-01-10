@@ -44,6 +44,7 @@ def receber_dados_bd():
 #
 ##########################################################################
 def cadastrar_planta_db():
+    conexao = sqlite3.connect('teste.db')
 
     resultado = recebe_dados()
 
@@ -62,6 +63,7 @@ def cadastrar_planta_db():
         # Insere os dados
         conexao.execute(query, (nome_db, preco_db, preferencia_db))
         conexao.commit()
+        print('-'*20)
         print("Dados inseridos com sucesso!")
     except sqlite3.Error as e:
         print("Erro ao inserir dados no banco de dados:", e)

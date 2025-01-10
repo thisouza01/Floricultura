@@ -48,13 +48,13 @@ try:
 
             if escolha_lista == 1:
                 # carregar dados do excel
-                tabela = pd.read_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx")
+                tabela = pd.read_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx")
 
                 # ordenar por nome
                 tabela = tabela.sort_values(by="Nome")
 
                 # salvar alteração
-                tabela.to_excel(r"C:\Users\tihso\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
+                tabela.to_excel(r"C:\Users\WIN 11\OneDrive\Desktop\OneDrivethiago\OneDrive\Excel-Python\Floricultura - Copiar.xlsx", index=False)
                 
                 # exibe os dados
                 print(tabela)  
