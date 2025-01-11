@@ -13,12 +13,12 @@ def escreve_arquivo():
     
     with open("tabela_plantas.txt", 'w', encoding="utf-8") as arquivo:
         arquivo.write("Cadastro de Plantas\n")
-        arquivo.write("ID |    Nome    |   Preço  |    Preferencia   \n")
+        arquivo.write("ID|    Nome    |   Preço  |     Preferencia    \n")
         arquivo.write("-" * 30 + "\n")
         
         for linha in dados:
             id, nome, preco, preferencia = linha
-            arquivo.write(f"{id} | {nome} |    R${preco:.2f}    | {preferencia}\n")
+            arquivo.write(f"{id} |   {nome}   |    R${preco:.2f}    | {preferencia}\n")
 
     print('Convertido com sucesso!!')
 
