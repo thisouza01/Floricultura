@@ -17,7 +17,7 @@ def escreve_arquivo():
         
         for linha in dados:
             id, nome, preco, preferencia = linha
-            arquivo.write(f"{id};{nome};R${preco:.2f};{preferencia}\n")
+            arquivo.write(f"{id};{nome};{preco:.2f};{preferencia}\n")
 
     print('Convertido com sucesso!!')
 
