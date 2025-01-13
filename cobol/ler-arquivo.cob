@@ -25,8 +25,8 @@
       *
        WORKING-STORAGE SECTION.
        01  CAMINHO-ARQUIVO PIC X(100) VALUE
-           'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura' &
-               '\Floricultura-7\scripts\tabela_plantas.txt'.
+           'C:\Users\WIN 11\Floricultura\Floricultura-2' &
+               '\scripts\tabela_plantas.txt'.
 
        01  STATUS-ARQUIVO.
            05 FS-ARQUIVO       PIC 9(02).
@@ -38,13 +38,28 @@
            05 WS-NOME          PIC X(30).
            05 WS-PRECO         PIC 9(8)V99.
            05 WS-PREFERENCIA   PIC X(41).
-   
-       01 WS-PRECO-ED      PIC ZZZZZZZZ,ZZ.       
+
+       01 WS-PRECO-ED          PIC ZZZZZZZZ,ZZ.
+
+       01 EOF                  PIC X(01) VALUE 'N'.
+       01 CABECALHO            PIC X(01) VALUE 'N'.
+
       *
          PROCEDURE DIVISION.
        MAIN-PROCEDURE.
            PERFORM ABRE-ARQUIVO.
-           PERFORM LE-ARQUIVO.
+      *    RETIRAR OS DOIS CABEÇALHOS
+           PERFORM LE-ARQUIVO 2 TIMES.
+           MOVE 'Y' TO CABECALHO.
+           PERFORM UNTIL EOF = 'Y'
+                   PERFORM LE-ARQUIVO
+                   IF EOF NOT = 'Y'
+                       IF CABECALHO = 'Y'
+                           PERFORM UNSTRING-ARQUIVO
+                           PERFORM MOSTRA-ARQUIVO
+                       END-IF
+                   END-IF
+           END-PERFORM.
            PERFORM FECHA-ARQUIVO.
            STOP RUN.
 
@@ -58,15 +73,9 @@
                    DISPLAY 'ARQUIVO ABERTO COM SUCESSO!'.
 
           LE-ARQUIVO.
-               PERFORM UNTIL FS-ARQUIVO NOT = 00
                    READ ARQUIVO INTO WS-ARQUIVO
                    AT END
-                       MOVE 99 TO FS-ARQUIVO
-                   NOT AT END
-                       PERFORM UNSTRING-ARQUIVO
-                       PERFORM EDITA-PRECO
-                       PERFORM MOSTRA-ARQUIVO
-               END-PERFORM.
+                       MOVE 'Y' TO EOF.
 
           UNSTRING-ARQUIVO.
                UNSTRING WS-ARQUIVO
@@ -76,7 +85,7 @@
                         WS-PRECO
                         WS-PREFERENCIA
               END-UNSTRING.
-                  
+
           EDITA-PRECO.
               MOVE WS-PRECO TO WS-PRECO-ED.
 
