@@ -36,11 +36,21 @@
        01  WS-REGISTRO.
            05 WS-ID            PIC 9(01).
            05 WS-NOME          PIC X(30).
-           05 WS-PRECO         PIC 9(8)V99.
+           05 WS-PRECO         PIC X(08).
            05 WS-PREFERENCIA   PIC X(41).
 
-       01 WS-PRECO-ED          PIC ZZZZZZZZ,ZZ.
-
+       01 WS-PRECO-NUM         PIC 9(08)V99.    
+       01 WS-PRECO-ED          PIC ZZZZZZZ9,99.
+       
+       01 REGISTRO-MOD.
+           05 ID-MOD           PIC 9(01).
+           05 FILLER           PIC X(01) VALUE '|'.
+           05 NOME-MOD         PIC X(29).
+           05 FILLER           PIC X(01) VALUE '|'.
+           05 PRECO-MOD        PIC ZZZZZZZZ,ZZ.
+           05 FILLER           PIC X(01) VALUE '|'.
+           05 PREFERENCIA-MOD  PIC X(40).           
+           
        01 EOF                  PIC X(01) VALUE 'N'.
        01 CABECALHO            PIC X(01) VALUE 'N'.
 
@@ -56,6 +66,9 @@
                    IF EOF NOT = 'Y'
                        IF CABECALHO = 'Y'
                            PERFORM UNSTRING-ARQUIVO
+                           PERFORM CONVERTE-NUM
+                           PERFORM EDITA-PRECO
+                           PERFORM MOVE-REGISTRO
                            PERFORM MOSTRA-ARQUIVO
                        END-IF
                    END-IF
@@ -86,23 +99,35 @@
                         WS-PREFERENCIA
               END-UNSTRING.
 
+          CONVERTE-NUM.
+              INSPECT WS-PRECO CONVERTING '.' TO ','.
+              MOVE FUNCTION NUMVAL-C(WS-PRECO) TO WS-PRECO-NUM.
+              
+              
           EDITA-PRECO.
-              MOVE WS-PRECO TO WS-PRECO-ED.
+              MOVE WS-PRECO-NUM TO WS-PRECO-ED.
+              
+          MOVE-REGISTRO.
+              MOVE WS-ID TO ID-MOD.
+              MOVE WS-NOME TO NOME-MOD.
+              MOVE WS-PRECO-NUM TO PRECO-MOD.
+              MOVE WS-PREFERENCIA TO PREFERENCIA-MOD.
 
           MOSTRA-ARQUIVO.
                DISPLAY '-------------------------------------------'
       * ARQUIVO COM TAMANHO FIXO DE 80 CARACTERES
-               DISPLAY  WS-REGISTRO.
-               DISPLAY 'ID: 'WS-ID.
-               DISPLAY 'NOME: 'WS-NOME.
-               DISPLAY 'PRECO: 'WS-PRECO-ED.
-               DISPLAY 'PREFERENCIA: 'WS-PREFERENCIA.
+               DISPLAY  REGISTRO-MOD.
+               DISPLAY 'ID: 'ID-MOD.
+               DISPLAY 'NOME: 'NOME-MOD.
+               DISPLAY 'PRECO: 'PRECO-MOD.
+               DISPLAY 'PREFERENCIA: 'PREFERENCIA-MOD.
 
           FECHA-ARQUIVO.
                CLOSE ARQUIVO.
                IF FS-ARQUIVO NOT = 00
                  DISPLAY 'ERRO AO FECHAR O ARQUIVO. STATUS: ' FS-ARQUIVO
                ELSE
+                 DISPLAY '-------------------------------------------'                   
                  DISPLAY 'ARQUIVO FECHADO COM SUCESSO.'.
 
 
