@@ -23,7 +23,7 @@ def recebe_dados():
     preferencia =  str(input("Preferência: "))
 
     # verifica se preco esta preenchido corretamente
-    while preferencia != ['sol', 'Sol', 'Sombra', 'sombra']:
+    while preferencia not in ['sol', 'sombra', 'Sol', 'Sombra']:
         print('Digite uma preferencia válida! [sol ou sombra]')    
         preferencia =  str(input("Preferência: "))
 
