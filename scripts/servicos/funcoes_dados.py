@@ -1,32 +1,41 @@
-import pandas as pd
-
 # recebe dados
 def recebe_dados():
-    nome =  str(input("Nome da planta: "))
 
-    # verifica se nome esta preenchido
-    while len(nome) <= 2:
-        print('Tamanho inválido!')
-        nome =  str(input("Nome da planta: "))
+    # valida os dados
+    def entrada_valida(mensagem, validacao, msg_erro):
+        # loop para verificação
+        while True:
+            valor = input(mensagem).strip()
+            if validacao(valor):
+                return valor
+            print(msg_erro)
 
-    preco =  str(input("Preço: "))
 
-    # verifica se preco esta preenchido
-    while len(preco) <= 0:
-        print('Preço inválido!')
-        preco =  str(input("Preço: "))
+    # valida o nome
+    nome = entrada_valida(
+        'Nome da planta: ',
+        # o tamanho do nome tem que ser maior que 2
+        lambda x: len(x) > 2,
+        'Tamanho inválido! Deve conter no mínimo 3 letras'
+    )
 
-    # valida preço
-    if preco.isnumeric():
-        preco = float(preco)
+    # valida 0 preço
+    preco = entrada_valida(
+        'Preço: ',
+        # troco o ponto e verifico se são todos numeros
+        lambda x: str(x).replace('.', '', 1).isdigit(),
+        'Preço inválido! Digite um valor numérico.'
+    )
+    # converte para float o numero
+    preco = float(preco)
 
-    preferencia =  str(input("Preferência: "))
-
-    # verifica se preco esta preenchido corretamente
-    while preferencia not in ['sol', 'sombra', 'Sol', 'Sombra']:
-        print('Digite uma preferencia válida! [sol ou sombra]')    
-        preferencia =  str(input("Preferência: "))
-
+    # Validação para a preferência
+    preferencia = entrada_valida(
+        "Preferência [sol ou sombra]: ",
+        lambda x: str(x).lower() in ['sol', 'sombra'],
+        "Preferência inválida! Digite 'sol' ou 'sombra'."
+    )
+    preferencia = preferencia.lower()
 
     produto = [nome, preco, preferencia]
     return produto

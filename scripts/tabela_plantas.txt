@@ -7,3 +7,7 @@ ID|Nome    |   Preço  |     Preferencia
 5;Lavanda;3,5;sol
 6;Lavanda md;3.5;Sol
 7;sunpatiens md;3,50;Sol
+8;;;
+9;asdasd;3232.0;sol
+10;aaaa;123.32;sol
+11;alocacia;1.0;sombra
