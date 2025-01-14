@@ -9,6 +9,7 @@ from servicos.funcoes_dados import recebe_dados
 def receber_dados_bd():    
     try:
         resultado = [*recebe_dados()]
+   
     except(KeyboardInterrupt):
         print('Interrompido pelo teclado!')
 

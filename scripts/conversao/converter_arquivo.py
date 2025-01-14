@@ -6,7 +6,7 @@
 #########################################################################
 def escreve_arquivo():
     import sqlite3
-    conexao = sqlite3.connect(r'C:\Users\WIN 11\Floricultura\scripts\teste.db')
+    conexao = sqlite3.connect(r'C:\Users\WIN 11\Floricultura\Floricultura-4\scripts\teste.db')
     
     cursor = conexao.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA")
     dados = cursor.fetchall()
@@ -17,7 +17,7 @@ def escreve_arquivo():
         
         for linha in dados:
             id, nome, preco, preferencia = linha
-            arquivo.write(f"{id};{nome};{preco:.2f};{preferencia}\n")
+            arquivo.write(f'{id};{nome};{preco};{preferencia}\n')
 
     print('Convertido com sucesso!!')
 

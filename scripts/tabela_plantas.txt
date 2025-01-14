@@ -1,6 +1,9 @@
 ID|Nome    |   Preço  |     Preferencia    
 --------------------------------------------------------------------------------
-1;Alfazema md;4.00;Sol
-2;Jasmim Manga;250.00;Sol
-3;Jasmim Manga;280.00;Sol
-4;Ixoria folha fina md;7.00;Sol
+1;Alfazema md;4.0;Sol
+2;Jasmim Manga;250.0;Sol
+3;Jasmim Manga;280.0;Sol
+4;Ixoria folha fina md;7.0;Sol
+5;Lavanda;3,5;sol
+6;Lavanda md;3.5;Sol
+7;sunpatiens md;3,50;Sol
