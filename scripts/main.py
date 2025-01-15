@@ -16,21 +16,17 @@ try:
                 escolha = int(escolha)
             else:    
                 print('Digite uma opção válida!')
-            
+            print('Opção inválida!')
         funcao.mostra_linha() 
 
 #                          CADASTRA AS PLANTAS
 
         if escolha == 1: 
             from banco_dados.banco import cadastrar_planta_db
-            import sqlite3
 
             # adiciona planta ao banco de dados
-            cadastrar_planta_db(conexao = sqlite3.connect('teste.db'))
+            cadastrar_planta_db(conexao = 'teste.db')
             
-            # encerra conexão
-            conexao.close()
-            print("Conexão encerrada com sucesso.")
 
 #                          LISTA AS PLANTAS
 

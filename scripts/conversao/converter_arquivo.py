@@ -1,9 +1,6 @@
 
-#########################################################################
-#
 #                         ESCREVE NO ARQUIVO TXT
-#                           
-#########################################################################
+
 def escreve_arquivo(conexao):
 
     cursor = conexao.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA")

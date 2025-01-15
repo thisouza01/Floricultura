@@ -30,13 +30,15 @@ def cadastrar_planta_db(conexao):
             VALUES (?,?,?)
         """
     try:
-        # Insere os dados
-        conexao.execute(query, (nome_db, preco_db, preferencia_db))
-        conexao.commit()
-        print('-'*20)
-        print("Dados inseridos com sucesso!")
+        with sqlite3.connect(conexao) as conecta:
+            # Insere os dados
+            conecta.execute(query, (nome_db, preco_db, preferencia_db))
+            print('-'*20)
+            print("Dados inseridos com sucesso!")
     except sqlite3.Error as e:
         print("Erro ao inserir dados no banco de dados:", e)
+    except sqlite3.ProgrammingError:
+        print('Banco de dados não acessível!')   
     
 
 #                           SELECIONA * PLANTAS

@@ -18,3 +18,4 @@ ID|Nome    |   Preço  |     Preferencia
 16;aaaa;2.0;sol
 17;rrrrrr;23.0;sol
 18;aaaaaaaaaaa;222222.0;sol
+19;666;231.0;sol

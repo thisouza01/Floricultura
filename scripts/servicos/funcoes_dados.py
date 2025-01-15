@@ -15,8 +15,8 @@ def recebe_dados():
     nome = entrada_valida(
         'Nome da planta: ',
         # o tamanho do nome tem que ser maior que 2
-        lambda x: len(x) > 2,
-        'Tamanho inválido! Deve conter no mínimo 3 letras'
+        lambda x: len(x) > 2 and str(x).isalpha(),
+        'Deve conter no mínimo 3 caracteres alfabeticos!'
     )
 
     # valida 0 preço
