@@ -5,11 +5,10 @@
 #                           
 #########################################################################
 def escreve_arquivo(conexao):
-    import sqlite3
-    conecta = sqlite3.connect(conexao)
-    cursor = conecta.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA")
+
+    cursor = conexao.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA")
     dados = cursor.fetchall()
-    
+
     with open("tabela_plantas.txt", 'w', encoding="utf-8") as arquivo:
         arquivo.write("ID|Nome    |   Preço  |     Preferencia    \n")
         arquivo.write("-" * 80 + "\n")

@@ -1,11 +1,8 @@
 import sqlite3
 from servicos.funcoes_dados import recebe_dados
 
-##########################################################################
-#
 #                      RECEBE DADOS PARA O BANCO
-#
-##########################################################################
+
 def receber_dados_bd():    
     try:
         resultado = [*recebe_dados()]
@@ -14,11 +11,9 @@ def receber_dados_bd():
         print('Interrompido pelo teclado!')
 
     return resultado
-##########################################################################
-#
+
 #                    INSERE PLANTAS NO BANCO DE DADOS
-#
-##########################################################################
+
 def cadastrar_planta_db(conexao):
 
     resultado = recebe_dados()
@@ -42,39 +37,35 @@ def cadastrar_planta_db(conexao):
         print("Dados inseridos com sucesso!")
     except sqlite3.Error as e:
         print("Erro ao inserir dados no banco de dados:", e)
-        
-#########################################################################
-#
+    finally:    
+        conexao.close()
+        print("Conexão encerrada com sucesso.")
+
 #                           SELECIONA * PLANTAS
-#                           
-#########################################################################
-def mostrar_plantas_db():
-    conexao = sqlite3.connect('teste.db')
 
-    cursor = conexao.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA")
-    for linha in cursor:
-        print('----------------------')
-        print('ID = ', linha[0])
-        print('NOME = ', linha[1])
-        print('PRECO = ', linha[2])
+def mostrar_plantas_db(conexao):
 
-    print('Consulta realizado com sucesso!!')    
+    with sqlite3.connect(conexao) as conecta:
+
+        cursor = conecta.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA")
+
+        for linha in cursor:
+            print('----------------------')
+            print('ID = ', linha[0])
+            print('NOME = ', linha[1])
+            print('PRECO = ', linha[2])
+
+        print('Consulta realizado com sucesso!!')    
 
 
-    
-##########################################################################
-#
 #           TENTAR CONECTAR AO BANCO SE EXISTIR, SENÃO CRIA
-#
-##########################################################################
+
 if __name__ == '__main__':
     conexao = sqlite3.connect('teste.db')
     print('Database criado com sucesso!')
-##########################################################################
-#
+
 #                  VERIFICA SE A TABELA JA FOI CRIADA
-#
-##########################################################################
+
     recebe_cursor = conexao.execute('''SELECT COUNT(*) from sqlite_master''')
     qnt_tabelas = recebe_cursor.fetchone()[0]
 
@@ -92,10 +83,6 @@ if __name__ == '__main__':
     mostrar_plantas_db()
 
 
-#########################################################################
-#
 #                             ENCERRA CONEXÃO
-#                             
-##########################################################################
+
     conexao.close()
-##########################################################################

@@ -14,3 +14,7 @@ ID|Nome    |   Preço  |     Preferencia
 12;galho;3.4;sol
 13;stick;3.491;sol
 14;aaass;23.0;sombra
+15;Vinca md;3.5;sol
+16;aaaa;2.0;sol
+17;rrrrrr;23.0;sol
+18;aaaaaaaaaaa;222222.0;sol
