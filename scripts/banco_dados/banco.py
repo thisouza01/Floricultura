@@ -37,9 +37,7 @@ def cadastrar_planta_db(conexao):
         print("Dados inseridos com sucesso!")
     except sqlite3.Error as e:
         print("Erro ao inserir dados no banco de dados:", e)
-    finally:    
-        conexao.close()
-        print("Conexão encerrada com sucesso.")
+    
 
 #                           SELECIONA * PLANTAS
 
@@ -47,6 +45,7 @@ def mostrar_plantas_db(conexao):
 
     with sqlite3.connect(conexao) as conecta:
 
+        # me possibilita acessar os dados como um dicionário - pelos nomes
         conecta.row_factory = sqlite3.Row
 
         cursor = conecta.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA")
@@ -58,7 +57,7 @@ def mostrar_plantas_db(conexao):
             print('PRECO = ', linha['PRECO'], end = ' | ')
             print('PREFERENCIA = ', linha['PREFERENCIA'])
 
-        print('Consulta realizado com sucesso!!')    
+        print('Consulta realizado com sucesso!!')     
 
 
 #           TENTAR CONECTAR AO BANCO SE EXISTIR, SENÃO CRIA

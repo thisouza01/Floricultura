@@ -27,6 +27,10 @@ try:
 
             # adiciona planta ao banco de dados
             cadastrar_planta_db(conexao = sqlite3.connect('teste.db'))
+            
+            # encerra conexão
+            conexao.close()
+            print("Conexão encerrada com sucesso.")
 
 #                          LISTA AS PLANTAS
 
@@ -40,6 +44,8 @@ try:
             conexao = r'C:\Users\WIN 11\Floricultura\Floricultura-5\scripts\teste.db'
             
             mostrar_plantas_db(conexao)
+
+            
 
 #                         CONVERTE PARA ARQUIVO
               
