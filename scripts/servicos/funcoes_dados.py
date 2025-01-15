@@ -10,12 +10,15 @@ def recebe_dados():
                 return valor
             print(msg_erro)
 
+    # o tamanho do nome tem que ser maior que 2, pode conter espaço e não pode ser numero
+    def valida_nome(nome):
+        return len(nome) > 2 and all(char.isalpha() or char.isspace() for char in nome)
+
 
     # valida o nome
     nome = entrada_valida(
         'Nome da planta: ',
-        # o tamanho do nome tem que ser maior que 2
-        lambda x: len(x) > 2 and str(x).isalpha(),
+        valida_nome,
         'Deve conter no mínimo 3 caracteres alfabeticos!'
     )
 

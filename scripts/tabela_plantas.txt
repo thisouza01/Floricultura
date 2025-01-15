@@ -19,3 +19,4 @@ ID|Nome    |   Preço  |     Preferencia
 17;rrrrrr;23.0;sol
 18;aaaaaaaaaaa;222222.0;sol
 19;666;231.0;sol
+20;begonia maculata;40.0;sombra
