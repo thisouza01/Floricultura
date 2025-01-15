@@ -19,8 +19,7 @@ def receber_dados_bd():
 #                    INSERE PLANTAS NO BANCO DE DADOS
 #
 ##########################################################################
-def cadastrar_planta_db():
-    conexao = sqlite3.connect('teste.db')
+def cadastrar_planta_db(conexao):
 
     resultado = recebe_dados()
 

@@ -26,9 +26,10 @@ try:
 ##########################################################################
         if escolha == 1: 
             from banco_dados.banco import cadastrar_planta_db
+            import sqlite3
 
             # adiciona planta ao banco de dados
-            cadastrar_planta_db()
+            cadastrar_planta_db(conexao = sqlite3.connect('teste.db'))
 
 ##########################################################################
 #
@@ -50,7 +51,7 @@ try:
         elif escolha == 3: 
             import conversao.converter_arquivo as convert_arq
 
-            convert_arq.escreve_arquivo()  
+            convert_arq.escreve_arquivo(conexao=r'C:\Users\WIN 11\Floricultura\Floricultura-5\scripts\teste.db')  
             
 ##########################################################################
 #

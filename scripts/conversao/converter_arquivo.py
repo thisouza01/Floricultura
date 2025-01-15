@@ -4,11 +4,10 @@
 #                         ESCREVE NO ARQUIVO TXT
 #                           
 #########################################################################
-def escreve_arquivo():
+def escreve_arquivo(conexao):
     import sqlite3
-    conexao = sqlite3.connect(r'C:\Users\WIN 11\Floricultura\Floricultura-4\scripts\teste.db')
-    
-    cursor = conexao.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA")
+    conecta = sqlite3.connect(conexao)
+    cursor = conecta.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA")
     dados = cursor.fetchall()
     
     with open("tabela_plantas.txt", 'w', encoding="utf-8") as arquivo:

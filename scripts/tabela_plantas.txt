@@ -11,3 +11,6 @@ ID|Nome    |   Preço  |     Preferencia
 9;asdasd;3232.0;sol
 10;aaaa;123.32;sol
 11;alocacia;1.0;sombra
+12;galho;3.4;sol
+13;stick;3.491;sol
+14;aaass;23.0;sombra
