@@ -9,7 +9,7 @@ try:
         escolha = 0
 
         # escolhe e valida opções
-        while escolha not in (1, 2, 3, 4, 5):
+        while escolha not in (1, 2, 3, 4, 5, 6):
             # verifica se quer adicionar
             escolha = str(input("Escolha a opção: ").strip())
 
@@ -56,9 +56,17 @@ try:
             atualizar_planta_db(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')  
 
 
+#                         DELETA DADO DAS PLANTAS QUE SÂO NULOS
+              
+        elif escolha == 5: 
+            from banco_dados.banco import deleta_planta_db
+            
+            deleta_planta_db(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')  
+
+
 #                              SAIDA
            
-        elif escolha == 5:
+        elif escolha == 6:
             break
         else:
             print('Opção inválida, digite outra')

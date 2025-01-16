@@ -66,17 +66,36 @@ def mostrar_plantas_db(conexao):
 
 
 #                           ATUALIZA DADOS PLANTAS
+
 def atualizar_planta_db(conexao):
     try:
         with sqlite3.connect(conexao) as conecta:
 
             conecta.execute("""
                             UPDATE PLANTA
-                            SET PREFERENCIA = 'sol'
-                            WHERE PREFERENCIA = 'Sol'  
+                            SET PREFERENCIA = 'sombra'
+                            WHERE PREFERENCIA = 'Sombra'  
                             """)
             
         print('Atualizado com sucesso!!')
+
+    except sqlite3.Error as e:
+        print("Erro ao atualizar dados no banco de dados:", e)
+
+    except sqlite3.ProgrammingError:
+        print('Banco de dados não acessível!')
+
+
+#                           DELETA DADOS NULOS PLANTAS
+
+def deleta_planta_db(conexao):
+    try:
+
+        with sqlite3.connect(conexao) as conecta:
+
+            conecta.execute("DELETE FROM PLANTA WHERE NOME IS NULL OR NOME = ''" )
+
+        print('Deletado com sucesso!')
 
     except sqlite3.Error as e:
         print("Erro ao atualizar dados no banco de dados:", e)

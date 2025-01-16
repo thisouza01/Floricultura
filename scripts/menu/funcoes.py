@@ -17,6 +17,7 @@ def mostra_interface(nome):
     print('2 - Listagem de plantas')
     print('3 - Converter arquivo para TXT')
     print('4 - Atualizar dados das plantas')
-    print('5 - Sair')
+    print('5 - Deleta dados das plantas')
+    print('6 - Sair')
 
     mostra_linha()   
