@@ -9,7 +9,7 @@ try:
         escolha = 0
 
         # escolhe e valida opções
-        while escolha not in (1, 2, 3, 4):
+        while escolha not in (1, 2, 3, 4, 5):
             # verifica se quer adicionar
             escolha = str(input("Escolha a opção: ").strip())
 
@@ -18,6 +18,7 @@ try:
             else:    
                 print('Digite uma opção válida!')
         funcao.mostra_linha() 
+
 
 #                          CADASTRA AS PLANTAS
 
@@ -32,12 +33,11 @@ try:
 
         elif escolha == 2: 
             from banco_dados.banco import mostrar_plantas_db
-            import sqlite3
 
             funcao.mostra_cabecalho('SELECIONANDO...')
 
             # seleciona as plantas no banco de dados
-            mostrar_plantas_db(conexao = r'C:\Users\WIN 11\Floricultura\Floricultura-5\scripts\teste.db')
+            mostrar_plantas_db(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')
  
 
 #                         CONVERTE PARA ARQUIVO
@@ -45,11 +45,20 @@ try:
         elif escolha == 3: 
             import conversao.converter_arquivo as convert_arq
             
-            convert_arq.escreve_arquivo(conexao = r'C:\Users\WIN 11\Floricultura\Floricultura-5\scripts\teste.db')  
+            convert_arq.escreve_arquivo(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')  
             
+
+#                         ATUALIZA DADO DAS PLANTAS
+              
+        elif escolha == 4: 
+            from banco_dados.banco import atualizar_planta_db
+            
+            atualizar_planta_db(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')  
+
+
 #                              SAIDA
            
-        elif escolha == 4:
+        elif escolha == 5:
             break
         else:
             print('Opção inválida, digite outra')

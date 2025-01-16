@@ -18,7 +18,8 @@ def escreve_arquivo(conexao):
                     arquivo.write(f'{id};{nome};{preco};{preferencia}\n')
 
             print('Convertido com sucesso!!')
-    except:
-        print()
+    except sqlite3.Error as e:
+        print("Erro ao entrar no banco de dados:", e)
+
 if __name__ == '__main__':
     escreve_arquivo()    

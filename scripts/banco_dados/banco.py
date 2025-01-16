@@ -30,13 +30,16 @@ def cadastrar_planta_db(conexao):
             VALUES (?,?,?)
         """
     try:
+
         with sqlite3.connect(conexao) as conecta:
             # Insere os dados
             conecta.execute(query, (nome_db, preco_db, preferencia_db))
             print('-'*20)
             print("Dados inseridos com sucesso!")
+
     except sqlite3.Error as e:
         print("Erro ao inserir dados no banco de dados:", e)
+
     except sqlite3.ProgrammingError:
         print('Banco de dados não acessível!')   
     
@@ -50,7 +53,7 @@ def mostrar_plantas_db(conexao):
         # me possibilita acessar os dados como um dicionário - pelos nomes
         conecta.row_factory = sqlite3.Row
 
-        cursor = conecta.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA")
+        cursor = conecta.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA ORDER BY ID")
 
         for linha in cursor:
             print('-'*80)
@@ -60,6 +63,26 @@ def mostrar_plantas_db(conexao):
             print('PREFERENCIA = ', linha['PREFERENCIA'])
 
         print('Consulta realizado com sucesso!!')     
+
+
+#                           ATUALIZA DADOS PLANTAS
+def atualizar_planta_db(conexao):
+    try:
+        with sqlite3.connect(conexao) as conecta:
+
+            conecta.execute("""
+                            UPDATE PLANTA
+                            SET PREFERENCIA = 'sol'
+                            WHERE PREFERENCIA = 'Sol'  
+                            """)
+            
+        print('Atualizado com sucesso!!')
+
+    except sqlite3.Error as e:
+        print("Erro ao atualizar dados no banco de dados:", e)
+
+    except sqlite3.ProgrammingError:
+        print('Banco de dados não acessível!')
 
 
 #           TENTAR CONECTAR AO BANCO SE EXISTIR, SENÃO CRIA
