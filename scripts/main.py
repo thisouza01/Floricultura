@@ -10,7 +10,7 @@ try:
         # lista de opçoes
         opçoes = [1, 2, 3, 4, 5, 6]
 
-        # escolhe e valida opções
+        # escolhe e valida opções'
         while escolha not in (opçoes):
             # verifica se quer adicionar
             escolha = str(input("Escolha a opção: ").strip())
@@ -45,9 +45,9 @@ try:
 #                         CONVERTE PARA ARQUIVO
               
         elif escolha == 3: 
-            import conversao.converter_arquivo as convert_arq
+            from conversao.converter_arquivo import escreve_arquivo
             
-            convert_arq.escreve_arquivo(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')  
+            escreve_arquivo(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')  
             
 
 #                         ATUALIZA DADO DAS PLANTAS
