@@ -7,9 +7,11 @@ try:
 
         # zera a escolha 
         escolha = 0
+        # lista de opçoes
+        opçoes = [1, 2, 3, 4, 5, 6]
 
         # escolhe e valida opções
-        while escolha not in (1, 2, 3, 4, 5, 6):
+        while escolha not in (opçoes):
             # verifica se quer adicionar
             escolha = str(input("Escolha a opção: ").strip())
 
