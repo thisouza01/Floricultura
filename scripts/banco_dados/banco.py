@@ -93,7 +93,8 @@ def deleta_planta_db(conexao):
 
         with sqlite3.connect(conexao) as conecta:
 
-            conecta.execute("DELETE FROM PLANTA WHERE NOME IS NULL OR NOME = ''" )
+            #conecta.execute("DELETE FROM PLANTA WHERE NOME IS NULL OR NOME = ''" )
+            conecta.execute("DELETE FROM PLANTA WHERE NOME = 666")
 
         print('Deletado com sucesso!')
 

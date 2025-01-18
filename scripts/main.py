@@ -1,6 +1,7 @@
 # PROGRAMA PRINCIPAL
 try:
     from menu import funcoes as funcao
+    from time import sleep
 
     while True:
         funcao.mostra_interface('REGISTRAR')
@@ -29,6 +30,8 @@ try:
 
             # adiciona planta ao banco de dados
             cadastrar_planta_db(conexao = 'teste.db')
+            # espera 1 segundo
+            sleep(1)
             
 
 #                          LISTA AS PLANTAS
@@ -40,7 +43,8 @@ try:
 
             # seleciona as plantas no banco de dados
             mostrar_plantas_db(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')
- 
+            # espera 1 segundo
+            sleep(1)
 
 #                         CONVERTE PARA ARQUIVO
               
@@ -48,7 +52,8 @@ try:
             from conversao.converter_arquivo import escreve_arquivo
             
             escreve_arquivo(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')  
-            
+            # espera 1 segundo
+            sleep(1)
 
 #                         ATUALIZA DADO DAS PLANTAS
               
@@ -56,7 +61,8 @@ try:
             from banco_dados.banco import atualizar_planta_db
             
             atualizar_planta_db(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')  
-
+            # espera 1 segundo
+            sleep(1)
 
 #                         DELETA DADO DAS PLANTAS QUE SÂO NULOS
               
@@ -64,7 +70,8 @@ try:
             from banco_dados.banco import deleta_planta_db
             
             deleta_planta_db(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')  
-
+            # espera 1 segundo
+            sleep(1)
 
 #                              SAIDA
            
