@@ -37,12 +37,12 @@ try:
 #                          LISTA AS PLANTAS
 
         elif escolha == 2: 
-            from banco_dados.banco import mostrar_plantas_db
+            from banco_dados.banco import mostra_uma_planta_db
 
             funcao.mostra_cabecalho('SELECIONANDO...')
 
             # seleciona as plantas no banco de dados
-            mostrar_plantas_db(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')
+            mostra_uma_planta_db(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')
             # espera 1 segundo
             sleep(1)
 

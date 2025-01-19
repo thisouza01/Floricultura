@@ -47,23 +47,62 @@ def cadastrar_planta_db(conexao):
 #                           SELECIONA * PLANTAS
 
 def mostrar_plantas_db(conexao):
+    try:
+        with sqlite3.connect(conexao) as conecta:
 
-    with sqlite3.connect(conexao) as conecta:
+            # me possibilita acessar os dados como um dicionário - pelos nomes
+            conecta.row_factory = sqlite3.Row
 
-        # me possibilita acessar os dados como um dicionário - pelos nomes
-        conecta.row_factory = sqlite3.Row
+            cursor = conecta.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA ORDER BY ID")
 
-        cursor = conecta.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA ORDER BY ID")
+            for linha in cursor:
+                print('-'*80)
+                print('ID = ', linha['ID'], end = ' | ')
+                print('NOME = ', linha['NOME'], end = ' | ')
+                print('PRECO = ', linha['PRECO'], end = ' | ')
+                print('PREFERENCIA = ', linha['PREFERENCIA'])
 
-        for linha in cursor:
-            print('-'*80)
-            print('ID = ', linha['ID'], end = ' | ')
-            print('NOME = ', linha['NOME'], end = ' | ')
-            print('PRECO = ', linha['PRECO'], end = ' | ')
-            print('PREFERENCIA = ', linha['PREFERENCIA'])
+            print('Consulta realizado com sucesso!!')     
+    except sqlite3.Error as e:
+        print("Erro ao atualizar dados no banco de dados:", e)
 
-        print('Consulta realizado com sucesso!!')     
+    except sqlite3.ProgrammingError:
+        print('Banco de dados não acessível!')
 
+#                           SELECIONA 1 PLANTAS
+
+def mostra_uma_planta_db(conexao):
+    from menu.funcoes import row_formatada
+
+    try:
+        with sqlite3.connect(conexao) as conecta:
+
+            conecta.row_factory = sqlite3.Row
+
+            nome_planta = str(input('Qual o nome da planta que deseja ver?\n-> '))
+
+            cursor = conecta.execute("""
+                                     SELECT ID, NOME, PRECO, PREFERENCIA
+                                     FROM PLANTA
+                                     WHERE NOME = ?
+                                    """,(nome_planta.capitalize(),))
+            
+            linha = cursor.fetchone()
+            
+            if linha:
+                row_formatada(linha)
+            else:
+                print(f'Planta {nome_planta} não encontrada!')
+
+            
+        
+
+    except sqlite3.Error as e:
+        print("Erro ao mostrar dados no banco de dados:", e)
+
+    except sqlite3.ProgrammingError:
+        print('Banco de dados não acessível!')
+            
 
 #                           ATUALIZA DADOS PLANTAS
 

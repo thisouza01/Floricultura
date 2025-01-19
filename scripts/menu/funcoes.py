@@ -21,3 +21,10 @@ def mostra_interface(nome):
     print('6 - Sair')
 
     mostra_linha()   
+
+def row_formatada(linha):
+    print('-'*80)
+    print('ID = ', linha['ID'], end = ' | ')
+    print('NOME = ', linha['NOME'], end = ' | ')
+    print('PRECO = ', linha['PRECO'], end = ' | ')
+    print('PREFERENCIA = ', linha['PREFERENCIA'])    
