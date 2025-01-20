@@ -112,8 +112,8 @@ def atualizar_planta_db(conexao):
 
             conecta.execute("""
                             UPDATE PLANTA
-                            SET PREFERENCIA = 'sombra'
-                            WHERE PREFERENCIA = 'Sombra'  
+                            SET PREFERENCIA = 'Sol'
+                            WHERE NOME = 'Heliconia' 
                             """)
             
         print('Atualizado com sucesso!!')

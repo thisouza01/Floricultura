@@ -37,12 +37,12 @@ try:
 #                          LISTA AS PLANTAS
 
         elif escolha == 2: 
-            from banco_dados.banco import mostra_uma_planta_db
+            from banco_dados.banco import mostrar_plantas_db
 
             funcao.mostra_cabecalho('SELECIONANDO...')
 
             # seleciona as plantas no banco de dados
-            mostra_uma_planta_db(conexao = r'C:\Users\tihso\OC:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-1\scripts\teste.db')
+            mostrar_plantas_db(conexao = r'C:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-2\scripts\teste.db')
             # espera 1 segundo
             sleep(1)
 
@@ -53,7 +53,7 @@ try:
             
             funcao.mostra_cabecalho('CONVERTENDO...')
 
-            escreve_arquivo(conexao = r'C:\Users\tihso\OC:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-1\scripts\teste.db')  
+            escreve_arquivo(conexao = r'C:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-2\scripts\teste.db')  
             # espera 1 segundo
             sleep(1)
 
@@ -64,7 +64,7 @@ try:
 
             funcao.mostra_cabecalho('ATUALIZANDO...')
             
-            atualizar_planta_db(conexao = r'C:\Users\tihso\OC:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-1\scripts\teste.db')  
+            atualizar_planta_db(conexao = r'C:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-2\scripts\teste.db')  
             # espera 1 segundo
             sleep(1)
 
@@ -75,7 +75,7 @@ try:
 
             funcao.mostra_cabecalho('EXCLUINDO...')
             
-            deleta_planta_db(conexao = r'C:\Users\tihso\OC:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-1\scripts\teste.db')  
+            deleta_planta_db(conexao = r'C:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-2\scripts\teste.db')  
             # espera 1 segundo
             sleep(1)
 
