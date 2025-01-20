@@ -42,7 +42,7 @@ try:
             funcao.mostra_cabecalho('SELECIONANDO...')
 
             # seleciona as plantas no banco de dados
-            mostra_uma_planta_db(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')
+            mostra_uma_planta_db(conexao = r'C:\Users\tihso\OC:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-1\scripts\teste.db')
             # espera 1 segundo
             sleep(1)
 
@@ -51,7 +51,9 @@ try:
         elif escolha == 3: 
             from conversao.converter_arquivo import escreve_arquivo
             
-            escreve_arquivo(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')  
+            funcao.mostra_cabecalho('CONVERTENDO...')
+
+            escreve_arquivo(conexao = r'C:\Users\tihso\OC:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-1\scripts\teste.db')  
             # espera 1 segundo
             sleep(1)
 
@@ -59,8 +61,10 @@ try:
               
         elif escolha == 4: 
             from banco_dados.banco import atualizar_planta_db
+
+            funcao.mostra_cabecalho('ATUALIZANDO...')
             
-            atualizar_planta_db(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')  
+            atualizar_planta_db(conexao = r'C:\Users\tihso\OC:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-1\scripts\teste.db')  
             # espera 1 segundo
             sleep(1)
 
@@ -68,8 +72,10 @@ try:
               
         elif escolha == 5: 
             from banco_dados.banco import deleta_planta_db
+
+            funcao.mostra_cabecalho('EXCLUINDO...')
             
-            deleta_planta_db(conexao = r'C:\Users\tihso\OneDrive\Área de Trabalho\Floricultura\Floricultura-11\scripts\teste.db')  
+            deleta_planta_db(conexao = r'C:\Users\tihso\OC:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-1\scripts\teste.db')  
             # espera 1 segundo
             sleep(1)
 
