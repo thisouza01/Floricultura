@@ -166,7 +166,7 @@ if __name__ == '__main__':
 
 
     cadastrar_planta_db()
-    mostrar_plantas_db()
+    mostrar_todas_plantas_db()
 
 
 #                             ENCERRA CONEXÃO
