@@ -34,15 +34,37 @@ try:
             sleep(1)
             
 
-#                          LISTA AS PLANTAS
+#                          LISTAR TODAS AS PLANTAS
 
         elif escolha == 2: 
-            from banco_dados.banco import mostrar_plantas_db
+            from banco_dados.banco import mostrar_todas_plantas_db, mostra_uma_planta_db
 
-            funcao.mostra_cabecalho('SELECIONANDO...')
+            # recebe escolha
+            opçao = str(input('1 - Todas as plantas\n2 - Uma planta\n -> '))
 
-            # seleciona as plantas no banco de dados
-            mostrar_plantas_db(conexao = r'C:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-2\scripts\teste.db')
+            # verifica se é numérico
+            if opçao.isnumeric():
+                opçao = int(opçao)
+            else:
+                print('Tem que ser numérico! ')
+
+            while opçao not in (1, 2):
+                print('Digite uma opção válida')
+                print()
+                opçao = str(input('1 - Todas as plantas\n2 - Uma planta\n-> '))
+
+
+            if opçao == 1:
+                funcao.mostra_cabecalho('SELECIONANDO...')
+
+                # seleciona as plantas no banco de dados
+                mostrar_todas_plantas_db(conexao = r'C:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-2\scripts\teste.db')
+            else:    
+                funcao.mostra_cabecalho('SELECIONANDO...')
+
+                # seleciona apenas uma planta pelo nome no banco de dados 
+                mostra_uma_planta_db(conexao = r'C:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-2\scripts\teste.db')
+
             # espera 1 segundo
             sleep(1)
 

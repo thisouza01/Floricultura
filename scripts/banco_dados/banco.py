@@ -46,7 +46,7 @@ def cadastrar_planta_db(conexao):
 
 #                           SELECIONA * PLANTAS
 
-def mostrar_plantas_db(conexao):
+def mostrar_todas_plantas_db(conexao):
     try:
         with sqlite3.connect(conexao) as conecta:
 
