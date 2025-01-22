@@ -1,20 +1,22 @@
 ID|Nome    |   Preço  |     Preferencia    
 --------------------------------------------------------------------------------
-1;Alfazema md;4.0;sol
-2;Jasmim Manga;250.0;sol
-3;Jasmim Manga;280.0;sol
-4;Ixoria folha fina md;7.0;sol
-5;Lavanda;3,5;sol
-6;Lavanda md;3.5;sol
-7;sunpatiens md;3,50;sol
-9;asdasd;3232.0;sol
-10;aaaa;123.32;sol
+1;Alfazema md;4.0;Sol
+2;Jasmim Manga;250.0;Sol
+3;Jasmim Manga;280.0;Sol
+4;Ixoria folha fina md;7.0;Sol
+5;Lavanda;3,5;Sol
+6;Lavanda md;3.5;Sol
+7;sunpatiens md;3,50;Sol
+9;asdasd;3232.0;Sol
+10;aaaa;123.32;Sol
 11;alocacia;1.0;sombra
-12;galho;3.4;sol
-13;stick;3.491;sol
+12;galho;3.4;Sol
+13;stick;3.491;Sol
 14;aaass;23.0;sombra
-15;Vinca md;3.5;sol
-16;aaaa;2.0;sol
-17;rrrrrr;23.0;sol
-18;aaaaaaaaaaa;222222.0;sol
+15;Vinca md;3.5;Sol
+16;aaaa;2.0;Sol
+17;rrrrrr;23.0;Sol
+18;aaaaaaaaaaa;222222.0;Sol
+19;666;231.0;Sol
 20;begonia maculata;40.0;sombra
+21;Heliconia;50.0;Sol
