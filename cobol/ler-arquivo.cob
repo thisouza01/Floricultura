@@ -2,6 +2,7 @@
       * Author:
       * Date:
       * Purpose: Ler arquivo gerado e formatar para tamanho fixo
+      * adiciona todos os registros em uma tabela e mostra ordenadamente
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
@@ -30,21 +31,21 @@
 
        01  STATUS-ARQUIVO.
            05 FS-ARQUIVO       PIC 9(02).
-       
+
        01  WS-ARQUIVO          PIC X(80).
 
        77  QNT-PLANTAS         PIC 9(02) VALUE ZEROS.
-        
+
        01  PLANTAS.
            03 LIDOS            PIC 9(02)
                OCCURS 1 TO 99 DEPENDING ON QNT-PLANTAS.
-               
-       77  I                   PIC 9(02) VALUE ZEROS.        
-           
+
+       77  I                   PIC 9(02) VALUE ZEROS.
+
        01  TABELA-REGISTROS.
            03 REGISTROS        PIC X(90)
                OCCURS 1 TO 99 DEPENDING ON QNT-PLANTAS.
-           
+
        01  WS-REGISTRO.
            05 WS-ID            PIC 9(02).
            05 WS-NOME          PIC X(30).
@@ -81,13 +82,13 @@
                            PERFORM CONVERTE-NUM
                            PERFORM EDITA-PRECO
                            PERFORM MOVE-REGISTRO
-                           PERFORM CONTA-REGISTRO                           
+                           PERFORM CONTA-REGISTRO
                            PERFORM MOVE-REGISTRO-PARA-TABELA
-                           PERFORM MOSTRA-TABELA
                        END-IF
                    END-IF
            END-PERFORM.
-           PERFORM QNT-REGISTRO-LIDO.    
+           PERFORM MOSTRA-TABELA
+           PERFORM QNT-REGISTRO-LIDO.
            PERFORM FECHA-ARQUIVO.
            STOP RUN.
 
@@ -113,15 +114,15 @@
                         WS-PRECO
                         WS-PREFERENCIA
               END-UNSTRING.
-          
+
           CONTA-REGISTRO.
               IF QNT-PLANTAS < 99
                COMPUTE QNT-PLANTAS = QNT-PLANTAS + 1
-              END-IF. 
-               
+              END-IF.
+
           QNT-REGISTRO-LIDO.
               DISPLAY 'FORAM LIDOS: ' QNT-PLANTAS ' REGISTROS'.
-           
+
           CONVERTE-NUM.
               INSPECT WS-PRECO CONVERTING '.' TO ','.
               MOVE FUNCTION NUMVAL-C(WS-PRECO) TO WS-PRECO-NUM.
@@ -135,15 +136,21 @@
               MOVE WS-NOME TO NOME-MOD.
               MOVE WS-PRECO-NUM TO PRECO-MOD.
               MOVE WS-PREFERENCIA TO PREFERENCIA-MOD.
-           
+
           MOVE-REGISTRO-PARA-TABELA.
-              MOVE REGISTRO-MOD TO TABELA-REGISTROS.
+              MOVE REGISTRO-MOD TO REGISTROS(QNT-PLANTAS).
               
+          SORT-REGISTROS.
+              SORT REGISTROS
+                   ON ASCENDING KEY TEMP-NOME
+                   USING TABELA-REGISTROS
+                   GIVING REGISTRO-SORTED.
+
           MOSTRA-TABELA.
               PERFORM VARYING I FROM 1 BY 1 UNTIL I > QNT-PLANTAS
                    DISPLAY REGISTROS(I)
               END-PERFORM.
-           
+
           MOSTRA-ARQUIVO.
                DISPLAY '-----------------------------------------------'
       * ARQUIVO COM TAMANHO FIXO DE 80 CARACTERES
