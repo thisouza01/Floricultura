@@ -107,6 +107,12 @@ def mostra_uma_planta_db(conexao):
 #                           ATUALIZA DADOS PLANTAS
 
 def atualizar_planta_db(conexao):
+
+    # gostaria de atualizar qual planta?
+    id_planta = int(input('Qual o id da planta para atualizar: '))
+
+    escolha = str(input('Quer atualizar oque?\n1 - Nome\n2 - Preço\n3 - Preferência\n--> '))
+
     try:
         with sqlite3.connect(conexao) as conecta:
 
