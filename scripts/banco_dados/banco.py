@@ -109,18 +109,49 @@ def mostra_uma_planta_db(conexao):
 def atualizar_planta_db(conexao):
 
     # gostaria de atualizar qual planta?
-    id_planta = int(input('Qual o id da planta para atualizar: '))
-
-    escolha = str(input('Quer atualizar oque?\n1 - Nome\n2 - Preço\n3 - Preferência\n--> '))
 
     try:
-        with sqlite3.connect(conexao) as conecta:
 
-            conecta.execute("""
-                            UPDATE PLANTA
-                            SET PREFERENCIA = 'Sol'
-                            WHERE NOME = 'Heliconia' 
-                            """)
+        escolha = str(input('Quer atualizar oque?\n1 - Nome\n2 - Preço\n3 - Preferência\n--> '))
+    
+        match escolha:
+
+            case '1':
+                id_planta = int(input('Qual o id da planta para atualizar: '))
+                novo_nome = str(input('Nome atualizado: '))
+
+                with sqlite3.connect(conexao) as conecta:
+                    conecta.execute("""
+                                    UPDATE PLANTA
+                                    SET NOME = ?
+                                    WHERE ID = ? 
+                                    """)(novo_nome, id_planta)
+
+            case '2':
+                id_planta = int(input('Qual o id da planta para atualizar: '))
+                novo_preco = str(input('Preço atualizado: '))
+                
+                with sqlite3.connect(conexao) as conecta:
+                    conecta.execute("""
+                                    UPDATE PLANTA
+                                    SET PRECO = ?
+                                    WHERE ID = ? 
+                                    """)(novo_preco, id_planta)
+
+            case '3':
+                id_planta = int(input('Qual o id da planta para atualizar: '))
+                nova_preferencia = str(input('Preferência atualizado: '))
+
+                with sqlite3.connect(conexao) as conecta:
+                    conecta.execute("""
+                                    UPDATE PLANTA
+                                    SET PREFERENCIA = ?
+                                    WHERE ID = ? 
+                                    """)(nova_preferencia, id_planta)
+
+            case _:
+                return f"ID {id_planta} inválido!"
+                            
             
         print('Atualizado com sucesso!!')
 
@@ -129,6 +160,9 @@ def atualizar_planta_db(conexao):
 
     except sqlite3.ProgrammingError:
         print('Banco de dados não acessível!')
+
+    except (ValueError, TypeError):
+        print('')    
 
 
 #                           DELETA DADOS NULOS PLANTAS
