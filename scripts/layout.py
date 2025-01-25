@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from banco_dados.banco import * 
+from conversao.converter_arquivo import escreve_arquivo
 
 
 # cria uma nova instancia Tcl
@@ -35,6 +36,18 @@ ttk.Button(
     frm,
     text='Atualizar',
     command=lambda: atualizar_planta_db(r'C:\Users\tihso\Floricultura\scripts\teste.db')).grid(column=0, row=3)
+
+# BOTAO PARA CONVERTER ARQUIVO
+ttk.Button(
+    frm,
+    text='Converter para TXT',
+    command=lambda: escreve_arquivo(r'C:\Users\tihso\Floricultura\scripts\teste.db')).grid(column=0, row=4)
+
+# BOTAO PARA DELETAR PLANTA
+ttk.Button(
+    frm,
+    text='Excluir planta',
+    command=lambda: deleta_planta_db(r'C:\Users\tihso\Floricultura\scripts\teste.db')).grid(column=0, row=5)
 
 
 # cria um botal que sai da janela

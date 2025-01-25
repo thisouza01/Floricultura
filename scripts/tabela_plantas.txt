@@ -16,7 +16,8 @@ ID|Nome    |   Preço  |     Preferencia
 15;Vinca md;3.5;Sol
 16;aaaa;2.0;Sol
 17;rrrrrr;23.0;Sol
-18;aaaaaaaaaaa;222222.0;Sol
-19;666;231.0;Sol
+18;Jaca;222222.0;Sol
 20;begonia maculata;40.0;sombra
 21;Heliconia;50.0;Sol
+22;jacaranda;24.0;sol
+23;Jaboticaba;150.0;sol
