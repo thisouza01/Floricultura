@@ -117,37 +117,44 @@ def atualizar_planta_db(conexao):
         match escolha:
 
             case '1':
-                id_planta = int(input('Qual o id da planta para atualizar: '))
-                novo_nome = str(input('Nome atualizado: '))
-
+            
                 with sqlite3.connect(conexao) as conecta:
+
+                    id_planta = int(input('Qual o id da planta para atualizar: '))
+                    novo_nome = str(input('Nome atualizado: '))
+
                     conecta.execute("""
                                     UPDATE PLANTA
                                     SET NOME = ?
                                     WHERE ID = ? 
-                                    """)(novo_nome, id_planta)
+                                    """,(novo_nome.capitalize(), id_planta))
+            
 
             case '2':
-                id_planta = int(input('Qual o id da planta para atualizar: '))
-                novo_preco = str(input('Preço atualizado: '))
                 
                 with sqlite3.connect(conexao) as conecta:
+                    
+                    id_planta = int(input('Qual o id da planta para atualizar: '))
+                    novo_preco = str(input('Preço atualizado: '))
+                    
                     conecta.execute("""
                                     UPDATE PLANTA
                                     SET PRECO = ?
                                     WHERE ID = ? 
-                                    """)(novo_preco, id_planta)
+                                    """,(novo_preco, id_planta))
 
             case '3':
-                id_planta = int(input('Qual o id da planta para atualizar: '))
-                nova_preferencia = str(input('Preferência atualizado: '))
 
                 with sqlite3.connect(conexao) as conecta:
+                    
+                    id_planta = int(input('Qual o id da planta para atualizar: '))
+                    nova_preferencia = str(input('Preferência atualizado: '))
+                    
                     conecta.execute("""
                                     UPDATE PLANTA
                                     SET PREFERENCIA = ?
                                     WHERE ID = ? 
-                                    """)(nova_preferencia, id_planta)
+                                    """,(nova_preferencia, id_planta))
 
             case _:
                 return f"ID {id_planta} inválido!"

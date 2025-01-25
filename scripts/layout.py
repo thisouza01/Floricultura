@@ -16,25 +16,25 @@ frm.grid()
 ttk.Button(
     frm,
     text='Adicionar',
-    command=lambda: cadastrar_planta_db(r'C:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-7\scripts\teste.db')).grid(column=0, row=0)
+    command=lambda: cadastrar_planta_db(r'C:\Users\tihso\Floricultura\scripts\teste.db')).grid(column=0, row=0)
 
 # BOTAO PARA LISTAR TODAS AS PLANTA
 ttk.Button(
     frm,
     text='Listar todas',
-    command=lambda: mostrar_todas_plantas_db(r'C:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-7\scripts\teste.db')).grid(column=0, row=1)
+    command=lambda: mostrar_todas_plantas_db(r'C:\Users\tihso\Floricultura\scripts\teste.db')).grid(column=0, row=1)
 
 # BOTAO PARA LISTAR UMA PLANTA
 ttk.Button(
     frm,
     text='Listar uma',
-    command=lambda: mostra_uma_planta_db(r'C:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-7\scripts\teste.db')).grid(column=0, row=2)
+    command=lambda: mostra_uma_planta_db(r'C:\Users\tihso\Floricultura\scripts\teste.db')).grid(column=0, row=2)
 
 # BOTAO PARA ATUALIZAR UMA PLANTA
 ttk.Button(
     frm,
     text='Atualizar',
-    command=lambda: atualizar_planta_db(r'C:\Users\WIN 11\OneDrive\Desktop\Floricultura\Floricultura-7\scripts\teste.db')).grid(column=0, row=3)
+    command=lambda: atualizar_planta_db(r'C:\Users\tihso\Floricultura\scripts\teste.db')).grid(column=0, row=3)
 
 
 # cria um botal que sai da janela

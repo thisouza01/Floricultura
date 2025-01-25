@@ -40,5 +40,5 @@ def recebe_dados():
     )
     preferencia = preferencia.lower()
 
-    produto = [nome, preco, preferencia]
+    produto = [nome.capitalize(), preco, preferencia]
     return produto
