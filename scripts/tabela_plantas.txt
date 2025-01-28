@@ -21,3 +21,4 @@ ID|Nome    |   Preço  |     Preferencia
 21;Heliconia;50.0;Sol
 22;jacaranda;24.0;sol
 23;Jaboticaba;150.0;sol
+24;Clivia;40.0;sol

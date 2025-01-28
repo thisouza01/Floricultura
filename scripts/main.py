@@ -26,7 +26,7 @@ try:
 #                          CADASTRA AS PLANTAS
 
         if escolha == 1: 
-            from banco_dados.banco import cadastrar_planta_db
+            from gerenciamento.funcoes import cadastrar_planta_db
 
             # adiciona planta ao banco de dados
             cadastrar_planta_db(conexao = 'teste.db')
@@ -37,7 +37,7 @@ try:
 #                          LISTAR TODAS AS PLANTAS
 
         elif escolha == 2: 
-            from banco_dados.banco import mostrar_todas_plantas_db, mostra_uma_planta_db
+            from gerenciamento.funcoes import mostrar_todas_plantas_db, mostra_uma_planta_db
 
             # recebe escolha
             opçao = str(input('1 - Todas as plantas\n2 - Uma planta\n -> '))
@@ -82,7 +82,7 @@ try:
 #                         ATUALIZA DADO DAS PLANTAS
               
         elif escolha == 4: 
-            from banco_dados.banco import atualizar_planta_db
+            from gerenciamento.funcoes import atualizar_planta_db
 
             funcao.mostra_cabecalho('ATUALIZANDO...')
             
@@ -93,7 +93,7 @@ try:
 #                         DELETA DADO DAS PLANTAS QUE SÂO NULOS
               
         elif escolha == 5: 
-            from banco_dados.banco import deleta_planta_db
+            from gerenciamento.funcoes import deleta_planta_db
 
             funcao.mostra_cabecalho('EXCLUINDO...')
             
