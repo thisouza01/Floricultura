@@ -4,6 +4,7 @@ from banco_dados.banco import *
 from conversao.converter_arquivo import escreve_arquivo
 
 
+
 # cria uma nova instancia Tcl
 root = Tk()
 
@@ -19,11 +20,18 @@ ttk.Button(
     text='Adicionar',
     command=lambda: cadastrar_planta_db(r'C:\Users\tihso\Floricultura\scripts\teste.db')).grid(column=0, row=0)
 
+
+# Listar todas as plantas
+
+
 # BOTAO PARA LISTAR TODAS AS PLANTA
 ttk.Button(
     frm,
     text='Listar todas',
     command=lambda: mostrar_todas_plantas_db(r'C:\Users\tihso\Floricultura\scripts\teste.db')).grid(column=0, row=1)
+ 
+
+
 
 # BOTAO PARA LISTAR UMA PLANTA
 ttk.Button(
