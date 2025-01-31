@@ -42,7 +42,7 @@ ttk.Button(
 ttk.Button(
     frm1,
     text='Listar todas',
-    command=lambda: [mostrar_frame(frm2), mostrar_todas_plantas_db(r'C:\Users\WIN 11\Floricultura-1\scripts\teste.db')]).grid(column=0, row=1)
+    command=lambda: [mostrar_frame(frm2), mostrar_todas_plantas_db(conexao=r'C:\Users\WIN 11\Floricultura-1\scripts\teste.db', listbox=listbox)]).grid(column=0, row=1)
  
 
 # BOTAO PARA LISTAR UMA PLANTA

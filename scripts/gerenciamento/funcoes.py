@@ -46,9 +46,8 @@ def cadastrar_planta_db(conexao):
 
 #                           SELECIONA * PLANTAS
 
-def mostrar_todas_plantas_db(conexao):
+def mostrar_todas_plantas_db(conexao, listbox):
     import tkinter as tk
-    from tkinter import ttk
 
     try:
         with sqlite3.connect(conexao) as conecta:
@@ -58,11 +57,11 @@ def mostrar_todas_plantas_db(conexao):
             cursor = conecta.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA ORDER BY ID")
 
             # limpa a lista antes de adicionar novos itens
-            tk.Listbox.delete(0, tk.END)
+            listbox.delete(0, tk.END)
 
             # adiciona a listbox
             for linha in cursor:
-                tk.Listbox.insert(tk.END, f"{linha['ID']} - {linha['NOME']} | R$ {linha['PRECO']} | {linha['PREFERENCIA']}")
+                listbox.insert(tk.END, f"{linha['ID']} - {linha['NOME']} | R$ {linha['PRECO']} | {linha['PREFERENCIA']}")
 
             print('Plantas carregadas com sucesso!')   
               
