@@ -55,13 +55,17 @@ def mostrar_todas_plantas_db(conexao, listbox):
             # me possibilita acessar os dados como um dicionário - pelos nomes
             conecta.row_factory = sqlite3.Row
             cursor = conecta.execute("SELECT ID, NOME, PRECO, PREFERENCIA FROM PLANTA ORDER BY ID")
+            plantas = cursor.fetchall()
 
             # limpa a lista antes de adicionar novos itens
             listbox.delete(0, tk.END)
 
             # adiciona a listbox
-            for linha in cursor:
-                listbox.insert(tk.END, f"{linha['ID']} - {linha['NOME']} | R$ {linha['PRECO']} | {linha['PREFERENCIA']}")
+            for planta in plantas:
+                listbox.insert(tk.END, f"{planta['ID']} - {planta['NOME']} | R$ {planta['PRECO']} | {planta['PREFERENCIA']}")
+
+            # Ajustar a altura do listbox conforme o número de itens
+            listbox.config(height=len(plantas) if len(plantas) > 0 else 1)
 
             print('Plantas carregadas com sucesso!')   
               

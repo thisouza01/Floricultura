@@ -6,6 +6,7 @@ from conversao.converter_arquivo import escreve_arquivo
 # esconde todos so frames e mostra apenas o selecionado
 def mostrar_frame(frm):
     frm1.grid_forget()
+    frm2.grid_forget()
     frm.grid(row=0, column=0, sticky="nsew")
 
 # cria uma nova instancia Tcl
@@ -21,9 +22,8 @@ frm1.grid(row=0, column=0, sticky="nsew")
 frm2 = ttk.Frame(root, padding=10)
 
 # Listbox para exibir as plantas
-listbox = Listbox(frm2, width=40, height=10)
+listbox = Listbox(frm2, width=40)
 listbox.grid(column=0, row=0, padx=10, pady=10)
-
 
 # BOTÃO PARA VOLTAR PARA O FRAME1
 ttk.Button(
