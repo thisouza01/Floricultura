@@ -1,4 +1,5 @@
 import sqlite3
+import tkinter as tk
 from servicos.funcoes_dados import recebe_dados
 
 #                      RECEBE DADOS PARA O BANCO
@@ -47,8 +48,6 @@ def cadastrar_planta_db(conexao):
 #                           SELECIONA * PLANTAS
 
 def mostrar_todas_plantas_db(conexao, listbox):
-    import tkinter as tk
-
     try:
         with sqlite3.connect(conexao) as conecta:
 
@@ -77,7 +76,7 @@ def mostrar_todas_plantas_db(conexao, listbox):
 
 #                           SELECIONA 1 PLANTAS
 
-def mostra_uma_planta_db(conexao):
+def mostra_uma_planta_db(conexao, nome_planta):
     from menu.funcoes import row_formatada
 
     try:
@@ -85,24 +84,19 @@ def mostra_uma_planta_db(conexao):
 
             conecta.row_factory = sqlite3.Row
 
-            nome_planta = str(input('Qual o nome da planta que deseja ver?\n-> '))
-
             cursor = conecta.execute("""
                                      SELECT ID, NOME, PRECO, PREFERENCIA
                                      FROM PLANTA
                                      WHERE NOME = ?
-                                    """,(nome_planta.capitalize(),))
+                                    """,(nome_planta))
             
             linha = cursor.fetchone()
             
             if linha:
-                row_formatada(linha)
+                 return row_formatada(linha)
             else:
                 print(f'Planta {nome_planta} não encontrada!')
-
-            
-        
-
+                
     except sqlite3.Error as e:
         print("Erro ao mostrar dados no banco de dados:", e)
 

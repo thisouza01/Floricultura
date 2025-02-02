@@ -12,7 +12,7 @@ def mostrar_frame(frm):
 # cria uma nova instancia Tcl
 root = Tk()
 root.title('Tela Principal')
-root.geometry('300x200')
+root.geometry('700x400')
 
 # cria um frame principal
 frm1 = ttk.Frame(root, padding=10)
@@ -35,39 +35,55 @@ ttk.Button(
 ttk.Button(
     frm1,
     text='Adicionar',
-    command=lambda: cadastrar_planta_db(r'C:\Users\WIN 11\Floricultura-1\scripts\teste.db')).grid(column=0, row=0)
+    command=lambda: cadastrar_planta_db(r'C:\Users\tihso\Floricultura-4\scripts\teste.db')).grid(column=0, row=0)
 
 
 # BOTAO PARA LISTAR TODAS AS PLANTA
 ttk.Button(
     frm1,
     text='Listar todas',
-    command=lambda: [mostrar_frame(frm2), mostrar_todas_plantas_db(conexao=r'C:\Users\WIN 11\Floricultura-1\scripts\teste.db', listbox=listbox)]).grid(column=0, row=1)
+    command=lambda: [mostrar_frame(frm2), mostrar_todas_plantas_db(conexao=r'C:\Users\tihso\Floricultura-4\scripts\teste.db', listbox=listbox)]).grid(column=0, row=1)
  
 
-# BOTAO PARA LISTAR UMA PLANTA
+# LISTAR UMA PLANTA
+
+# cria a label
+lbl_nome = tk.Label(frm2, text='Nome da planta')
+lbl_nome.grid(row=0, column=0, padx=5, pady=5)
+
+# cria a entrada
+nome_planta = tk.Entry(frm2)
+nome_planta.grid(row=0, column=1, padx=5, pady=5)
+
 ttk.Button(
     frm1,
-    text='Listar uma',
-    command=lambda: mostra_uma_planta_db(r'C:\Users\WIN 11\Floricultura-1\scripts\teste.db')).grid(column=0, row=2)
-    
+    text="Listar uma",
+    command=lambda: mostrar_frame(frm2)
+).grid(column=0, row=2)
+
+ttk.Button(
+    frm2,
+    text='Buscar',
+    command = lambda: mostra_uma_planta_db(conexao=r'C:\Users\tihso\Floricultura-4\scripts\teste.db', nome_planta=nome_planta.get())).grid(row=0, column=2, padx=5, pady=5)
+
+
 # BOTAO PARA ATUALIZAR UMA PLANTA
 ttk.Button(
     frm1,
     text='Atualizar',
-    command=lambda: atualizar_planta_db(r'C:\Users\WIN 11\Floricultura-1\scripts\teste.db')).grid(column=0, row=3)
+    command=lambda: atualizar_planta_db(r'C:\Users\tihso\Floricultura-4\scripts\teste.db')).grid(column=0, row=3)
 
 # BOTAO PARA CONVERTER ARQUIVO
 ttk.Button(
     frm1,
     text='Converter para TXT',
-    command=lambda: escreve_arquivo(r'C:\Users\WIN 11\Floricultura-1\scripts\teste.db')).grid(column=0, row=4)
+    command=lambda: escreve_arquivo(r'C:\Users\tihso\Floricultura-4\scripts\teste.db')).grid(column=0, row=4)
 
 # BOTAO PARA DELETAR PLANTA
 ttk.Button(
     frm1,
     text='Excluir planta',
-    command=lambda: deleta_planta_db(r'C:\Users\WIN 11\Floricultura-1\scripts\teste.db')).grid(column=0, row=5)
+    command=lambda: deleta_planta_db(r'C:\Users\tihso\Floricultura-4\scripts\teste.db')).grid(column=0, row=5)
 
 
 # cria um botal que sai da janela
