@@ -76,8 +76,10 @@ def mostrar_todas_plantas_db(conexao, listbox):
 
 #                           SELECIONA 1 PLANTAS
 
-def mostra_uma_planta_db(conexao, nome_planta):
-    from menu.funcoes import row_formatada
+def mostra_uma_planta_db(conexao, nome_planta, resultado_label):
+    if resultado_label is None: 
+        print("Erro: resultado_label não foi passado corretamente!")
+        return
 
     try:
         with sqlite3.connect(conexao) as conecta:
@@ -85,20 +87,24 @@ def mostra_uma_planta_db(conexao, nome_planta):
             conecta.row_factory = sqlite3.Row
 
             cursor = conecta.execute("""
-                                     SELECT ID, NOME, PRECO, PREFERENCIA
+                                     SELECT NOME, PRECO, PREFERENCIA
                                      FROM PLANTA
                                      WHERE NOME = ?
-                                    """,(nome_planta))
+                                    """,(nome_planta,))
             
             linha = cursor.fetchone()
             
             if linha:
-                 return row_formatada(linha)
+                resultado = f"Nome: {linha['NOME']}\n Preço: R${linha['PRECO']}\n Preferência: {linha['PREFERENCIA']}"
+                resultado_label.config(text=resultado)
             else:
-                print(f'Planta {nome_planta} não encontrada!')
+                resultado_label.config(text=f'Planta "{nome_planta}" não encontrada!')
                 
     except sqlite3.Error as e:
         print("Erro ao mostrar dados no banco de dados:", e)
+
+    except Exception as e:
+        resultado_label.config(text=f"Erro: {str(e)}", fg="red")
 
     except sqlite3.ProgrammingError:
         print('Banco de dados não acessível!')
