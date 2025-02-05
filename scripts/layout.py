@@ -8,6 +8,7 @@ def mostrar_frame(frm):
     frm1.grid_forget()
     frm2.grid_forget()
     frm3.grid_forget()
+    frm4.grid_forget()
     frm.grid(row=0, column=0, sticky="nsew")
 
 # cria uma nova instancia Tcl
@@ -24,6 +25,9 @@ frm2 = ttk.Frame(root, padding=10)
 
 # cria o segundo Frame para listar uma plantas
 frm3 = ttk.Frame(root, padding=10)
+
+# cria o segundo Frame para listar uma plantas
+frm4 = ttk.Frame(root, padding=10)
 
 # Listbox para exibir as plantas
 listbox = Listbox(frm3, width=40)
@@ -42,18 +46,22 @@ ttk.Button(
     text='Voltar',
     command=lambda: mostrar_frame(frm1)).grid(column=0, row=5, pady=10)
 
-
+ttk.Button(
+    frm4,
+    text='Voltar',
+    command=lambda: mostrar_frame(frm1)).grid(column=0, row=5, pady=10)
 
 
 # BOTAO PARA ADICIONAR UMA PLANTA
 ttk.Button(
     frm1,
     text='Adicionar',
-    command=lambda: cadastrar_planta_db(r'C:\Users\WIN 11\Floricultura-3\scripts\teste.db')).grid(column=0, row=0)
+    command=lambda: [mostrar_frame(frm4), cadastrar_planta_db(r'C:\Users\WIN 11\Floricultura-3\scripts\teste.db')]).grid(column=0, row=0)
 
+lbl_nome_cadastro = tk.Label(frm4, text='Nome da planta')
+lbl_nome_cadastro.grid(row=0, column=0, padx=5, pady=5)
 
-
-
+nome_planta_cad = tk.StringVar() 
 
 # BOTAO PARA LISTAR TODAS AS PLANTA
 ttk.Button(
