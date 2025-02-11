@@ -1,27 +1,41 @@
 import sqlite3
 import tkinter as tk
 from servicos.funcoes_dados import recebe_dados
+from layout import cad_nome_planta, cad_preco_planta, cad_preferencia_planta
 
 #                      RECEBE DADOS PARA O BANCO
 
 def receber_dados_bd():    
+    # recebe dados via TKinter
+    nome = cad_nome_planta.get().strip()
+    preco = cad_preco_planta.get().strip()
+    preferencia = cad_preferencia_planta.get().strip()
+
     try:
-        resultado = [*recebe_dados()]
-   
+        preco = float(preco)
+
     except(KeyboardInterrupt):
         print('Interrompido pelo teclado!')
+    except(ValueError, TypeError):
+        print('Preço deve ser um numero válido')
 
-    return resultado
+
+    return nome, preco, preferencia
+
 
 #                    INSERE PLANTAS NO BANCO DE DADOS
 
 def cadastrar_planta_db(conexao):
-    # dados ja vem validados
     resultado = recebe_dados()
     
-    nome_db = resultado[0]
-    preco_db = resultado[1]
-    preferencia_db = resultado[2]
+    if resultado is None:
+        return 
+    
+    # validar dados
+
+
+
+    nome_db, preco_db, preferencia_db = resultado
     
     if len(resultado) != 3:
         raise ValueError('A função deve retornar apenas 3 argumentos: ')

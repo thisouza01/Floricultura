@@ -50,18 +50,47 @@ ttk.Button(
     frm4,
     text='Voltar',
     command=lambda: mostrar_frame(frm1)).grid(column=0, row=5, pady=10)
-
+ 
 
 # BOTAO PARA ADICIONAR UMA PLANTA
 ttk.Button(
     frm1,
     text='Adicionar',
-    command=lambda: [mostrar_frame(frm4), cadastrar_planta_db(r'C:\Users\WIN 11\Floricultura-3\scripts\teste.db')]).grid(column=0, row=0)
+    command=lambda: [mostrar_frame(frm2), cadastrar_planta_db(r'C:\Users\WIN 11\Floricultura-3\scripts\teste.db')]).grid(column=0, row=0)
 
-lbl_nome_cadastro = tk.Label(frm4, text='Nome da planta')
+# label "nome da planta"
+lbl_nome_cadastro = Label(frm2, text='Nome da planta')
 lbl_nome_cadastro.grid(row=0, column=0, padx=5, pady=5)
 
-nome_planta_cad = tk.StringVar() 
+# cria entrada de dados
+cad_nome_planta = StringVar()
+cad_planta = Entry(frm2, textvariable=cad_nome_planta) 
+cad_planta.grid(row=0, column=1, padx=5, pady=5)
+
+
+# label "preco da planta"
+lbl_preco_cadastro = Label(frm2, text='Preço da planta')
+lbl_preco_cadastro.grid(row=1, column=0, padx=5, pady=5)
+
+cad_preco_planta = StringVar()
+cad_preco = Entry(frm2, textvariable=cad_preco_planta)
+cad_preco.grid(row=1, column=1, padx=5, pady=5)
+
+
+# label "preferencia da planta"
+lbl_preferencia_cadastro = Label(frm2, text='Preferencia da planta')
+lbl_preferencia_cadastro.grid(row=2, column=0, padx=5, pady=5)
+
+cad_preferencia_planta = StringVar()
+cad_preferencia = Entry(frm2, textvariable=cad_preferencia_planta)
+cad_preferencia.grid(row=2, column=1, padx=5, pady=5)
+
+
+
+
+
+
+
 
 # BOTAO PARA LISTAR TODAS AS PLANTA
 ttk.Button(
@@ -72,28 +101,30 @@ ttk.Button(
  
 
 
+
 # LISTAR UMA PLANTA
 
 # cria a label
-lbl_nome = tk.Label(frm2, text='Nome da planta')
+lbl_nome = Label(frm4, text='Nome da planta')
 lbl_nome.grid(row=0, column=0, padx=5, pady=5)
 
 # cria a entrada
-nome_planta_var = tk.StringVar()
-nome_planta = tk.Entry(frm2, textvariable=nome_planta_var)
+nome_planta_var = StringVar()
+nome_planta = Entry(frm4, textvariable=nome_planta_var)
 nome_planta.grid(row=0, column=1, padx=5, pady=5)
 
 ttk.Button(
     frm1,
     text="Listar uma",
-    command=lambda: mostrar_frame(frm2)
+    command=lambda: mostrar_frame(frm4)
 ).grid(column=0, row=2)
 
-resultado_label = tk.Label(frm2, text='')
+resultado_label = Label(frm4, text='')
 resultado_label.grid(row=1, column=0, columnspan=3, padx=5, pady=5)
 
+# botão para buscar a planta digitada
 ttk.Button(
-    frm2,
+    frm4,
     text='Buscar',
     command = lambda: mostra_uma_planta_db(
                                             conexao=r'C:\Users\WIN 11\Floricultura-3\scripts\teste.db',
